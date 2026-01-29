@@ -1,0 +1,442 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Leather Item L1",
+      "price": 120,
+      "originalPrice": 180,
+      "onSale": true,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L1.jpg",
+      "gallery": ["/Product/L1.jpg"],
+      "description": "Premium handcrafted leather.",
+      "colors": [
+        { "name": "Noir", "hex": "#1a1a1a" },
+        { "name": "Cognac", "hex": "#8B4513" }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Leather Item L2",
+      "price": 130,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L2.jpg",
+      "gallery": ["/Product/L2.jpg"],
+      "description": "Elegant leather design.",
+      "colors": [
+        { "name": "Tan", "hex": "#D2B48C" },
+        { "name": "Coffee", "hex": "#4B3621" }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Leather Item L3",
+      "price": 110,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L3.jpg",
+      "gallery": ["/Product/L3.jpg"],
+      "description": "Minimalist leather essential.",
+      "colors": [{ "name": "Stone", "hex": "#877F7D" }]
+    },
+    {
+      "id": "4",
+      "name": "Leather Item L4",
+      "price": 140,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L4.jpg",
+      "gallery": ["/Product/L4.jpg"],
+      "description": "Durable textured leather.",
+      "colors": [
+        { "name": "Black", "hex": "#000000" },
+        { "name": "Slate", "hex": "#708090" }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Leather Item L5",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L5.jpg",
+      "gallery": ["/Product/L5.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "6",
+      "name": "Baggage B1",
+      "price": 200,
+      "originalPrice": 250,
+      "onSale": true,
+      "category": "Bags",
+      "mainImage": "/Product/B1.jpg",
+      "gallery": ["/Product/B1.jpg"],
+      "description": "Spacious travel bag.",
+      "colors": [
+        { "name": "Olive", "hex": "#556B2F" },
+        { "name": "Charcoal", "hex": "#36454F" }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Baggage B2",
+      "price": 220,
+      "category": "Bags",
+      "mainImage": "/Product/B2.jpg",
+      "gallery": ["/Product/B2.jpg"],
+      "description": "Urban daily backpack.",
+      "colors": [
+        { "name": "Navy", "hex": "#000080" },
+        { "name": "Ash", "hex": "#B2BEB5" }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Baggage B3",
+      "price": 280,
+      "category": "Bags",
+      "mainImage": "/Product/B3.jpg",
+      "gallery": ["/Product/B3.jpg"],
+      "description": "Premium messenger bag.",
+      "colors": [{ "name": "Mocha", "hex": "#A38068" }]
+    },
+    {
+      "id": "9",
+      "name": "Baggage B4",
+      "price": 210,
+      "category": "Bags",
+      "mainImage": "/Product/B4.jpg",
+      "gallery": ["/Product/B4.jpg"],
+      "description": "Slim laptop carrier.",
+      "colors": [{ "name": "Black", "hex": "#000000" }]
+    },
+    {
+      "id": "10",
+      "name": "Accessory A1",
+      "price": 45,
+      "category": "Accessories",
+      "mainImage": "/Product/A1.jpg",
+      "gallery": ["/Product/A1.jpg"],
+      "description": "Sophisticated accessory.",
+      "colors": [
+        { "name": "Gold", "hex": "#D4AF37" },
+        { "name": "Silver", "hex": "#C0C0C0" }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Accessory A2",
+      "price": 55,
+      "category": "Accessories",
+      "mainImage": "/Product/A2.jpg",
+      "gallery": ["/Product/A2.jpg"],
+      "description": "Modern style piece.",
+      "colors": [{ "name": "Clear", "hex": "#FFFFFF" }]
+    },
+    {
+      "id": "12",
+      "name": "Accessory A3",
+      "price": 40,
+      "category": "Accessories",
+      "mainImage": "/Product/A3.jpg",
+      "gallery": ["/Product/A3.jpg"],
+      "description": "Classic finishing touch.",
+      "colors": [{ "name": "Cream", "hex": "#FFFDD0" }]
+    },
+    {
+      "id": "13",
+      "name": "Accessory A4",
+      "price": 60,
+      "category": "Accessories",
+      "mainImage": "/Product/A4.jpg",
+      "gallery": ["/Product/A4.jpg"],
+      "description": "Signature detail item.",
+      "colors": [{ "name": "Tortoise", "hex": "#2E1A05" }]
+    },
+    {
+      "id": "14",
+      "name": "Accessory A5",
+      "price": 35,
+      "originalPrice": 50,
+      "onSale": true,
+      "category": "Accessories",
+      "mainImage": "/Product/A5.jpg",
+      "gallery": ["/Product/A5.jpg"],
+      "description": "Versatile accessory.",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    },
+    {
+      "id": "15",
+      "name": "Smart Wallet W1",
+      "price": 85,
+      "category": "Leather Goods",
+      "mainImage": "/Product/W1.jpg",
+      "gallery": ["/Product/W1.jpg"],
+      "description": "Compact bifold wallet.",
+      "colors": [
+        { "name": "Navy", "hex": "#000080" },
+        { "name": "Black", "hex": "#000000" }
+      ]
+    },
+    {
+      "id": "16",
+      "name": "Smart Wallet W2",
+      "price": 95,
+      "category": "Leather Goods",
+      "mainImage": "/Product/W2.jpg",
+      "gallery": ["/Product/W2.jpg"],
+      "description": "Grained leather wallet.",
+      "colors": [{ "name": "Wine", "hex": "#722F37" }]
+    },
+    {
+      "id": "17",
+      "name": "Winter Beanie",
+      "price": 35,
+      "category": "Accessories",
+      "mainImage": "/Product/beanie.png",
+      "gallery": ["/Product/beanie.png"],
+      "description": "Warm knit beanie.",
+      "colors": [
+        { "name": "Grey", "hex": "#808080" },
+        { "name": "Oatmeal", "hex": "#E3D5CA" }
+      ]
+    },
+    {
+      "id": "18",
+      "name": "Tailored Shirt S1",
+      "price": 75,
+      "category": "Clothing",
+      "mainImage": "/Product/S1.jpg",
+      "gallery": ["/Product/S1.jpg"],
+      "description": "Formal slim-fit shirt.",
+      "colors": [
+        { "name": "White", "hex": "#FFFFFF" },
+        { "name": "Light Blue", "hex": "#ADD8E6" }
+      ]
+    },
+    {
+      "id": "19",
+      "name": "Tailored Shirt S2",
+      "price": 75,
+      "category": "Clothing",
+      "mainImage": "/Product/S2.jpg",
+      "gallery": ["/Product/S2.jpg"],
+      "description": "Casual cotton shirt.",
+      "colors": [{ "name": "Khaki", "hex": "#C3B091" }]
+    },
+    {
+      "id": "20",
+      "name": "Essential Tee T1",
+      "price": 45,
+      "category": "Clothing",
+      "mainImage": "/Product/T1.jpg",
+      "gallery": ["/Product/T1.jpg"],
+      "description": "High-quality base layer.",
+      "colors": [
+        { "name": "Black", "hex": "#000000" },
+        { "name": "White", "hex": "#FFFFFF" }
+      ]
+    },
+    {
+      "id": "21",
+      "name": "Leather Item L6",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L6.jpg",
+      "gallery": ["/Product/L6.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "22",
+      "name": "Leather Item L8",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L8.jpg",
+      "gallery": ["/Product/L8.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "23",
+      "name": "Leather Item L9",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L9.jpg",
+      "gallery": ["/Product/L9.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "24",
+      "name": "Leather Item L10",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L10.jpg",
+      "gallery": ["/Product/L10.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "25",
+      "name": "Leather Item L11",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L11.jpg",
+      "gallery": ["/Product/L11.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "26",
+      "name": "Leather Item L12",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L12.jpg",
+      "gallery": ["/Product/L12.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "27",
+      "name": "Leather Item L13",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L13.jpg",
+      "gallery": ["/Product/L13.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "28",
+      "name": "Leather Item L14",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L14.jpg",
+      "gallery": ["/Product/L14.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "29",
+      "name": "Leather Item L15",
+      "price": 150,
+      "category": "Leather Goods",
+      "mainImage": "/Product/L15.jpg",
+      "gallery": ["/Product/L15.jpg"],
+      "description": "Luxury leather finish.",
+      "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    },
+    {
+      "id": "30",
+      "name": "Baggage B5",
+      "price": 210,
+      "category": "Bags",
+      "mainImage": "/Product/B5.jpg",
+      "gallery": ["/Product/B5.jpg"],
+      "description": "Slim laptop carrier.",
+      "colors": [{ "name": "Black", "hex": "#000000" }]
+    },
+    {
+      "id": "31",
+      "name": "Baggage B6",
+      "price": 210,
+      "category": "Bags",
+      "mainImage": "/Product/B6.jpg",
+      "gallery": ["/Product/B6.jpg"],
+      "description": "Slim laptop carrier.",
+      "colors": [{ "name": "Black", "hex": "#000000" }]
+    },
+    {
+      "id": "32",
+      "name": "Baggage B7",
+      "price": 210,
+      "category": "Bags",
+      "mainImage": "/Product/B7.jpg",
+      "gallery": ["/Product/B7.jpg"],
+      "description": "Slim laptop carrier.",
+      "colors": [{ "name": "Black", "hex": "#000000" }]
+    },
+    {
+      "id": "33",
+      "name": "Baggage B8",
+      "price": 210,
+      "category": "Bags",
+      "mainImage": "/Product/B8.jpg",
+      "gallery": ["/Product/B8.jpg"],
+      "description": "Slim laptop carrier.",
+      "colors": [{ "name": "Black", "hex": "#000000" }]
+    },
+    {
+      "id": "34",
+      "name": "Baggage B9",
+      "price": 210,
+      "category": "Bags",
+      "mainImage": "/Product/B9.jpg",
+      "gallery": ["/Product/B9.jpg"],
+      "description": "Slim laptop carrier.",
+      "colors": [{ "name": "Black", "hex": "#000000" }]
+    },
+    {
+      "id": "35",
+      "name": "Accessory A6",
+      "price": 50,
+      "category": "Accessories",
+      "mainImage": "/Product/A6.jpg",
+      "gallery": ["/Product/A6.jpg"],
+      "description": "Versatile accessory.",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    },
+    {
+      "id": "36",
+      "name": "Accessory A7",
+      "price": 50,
+      "category": "Accessories",
+      "mainImage": "/Product/A7.jpg",
+      "gallery": ["/Product/A7.jpg"],
+      "description": "Versatile accessory.",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    },
+    {
+      "id": "37",
+      "name": "Accessory A8",
+      "price": 50,
+      "category": "Accessories",
+      "mainImage": "/Product/A8.jpg",
+      "gallery": ["/Product/A8.jpg"],
+      "description": "Versatile accessory.",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    },
+    {
+      "id": "38",
+      "name": "Short S1",
+      "price": 210,
+      "originalPrice": 300,
+      "onSale": true,
+      "category": "Shorts",
+      "mainImage": "/Product/S1.jpg",
+      "gallery": ["/Product/S1.jpg"],
+      "description": "Nice Shorts",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    },
+    {
+      "id": "39",
+      "name": "Short S2",
+      "price": 300,
+      "category": "Shorts",
+      "mainImage": "/Product/S2.jpg",
+      "gallery": ["/Product/S2.jpg"],
+      "description": "Nice Shorts",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    },
+    {
+      "id": "40",
+      "name": "Short S3",
+      "price": 300,
+      "category": "Shorts",
+      "mainImage": "/Product/S3.jpg",
+      "gallery": ["/Product/S3.jpg"],
+      "description": "Nice Shorts",
+      "colors": [{ "name": "Matte Black", "hex": "#212121" }]
+    }
+  ]
+}

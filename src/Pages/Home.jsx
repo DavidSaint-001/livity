@@ -1,0 +1,145 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import ProductCard from "../Components/ProductCard"; // 1. Import your working component
+
+// ASSETS
+import heroImage from "../assets/images/hero bg.png";
+import tote from "../assets/images/product 4.png";
+import phonebag from "../assets/images/product 3.png";
+import coat from "../assets/images/product 1.png";
+import wool from "../assets/images/product 2.png"
+import banner1 from "../assets/images/banner 1.png";
+import banner2 from "../assets/images/banner 2.png";
+import img1 from "../assets/images/img 3.png";
+import img2 from "../assets/images/img 2.png";
+import img3 from "../assets/images/img 1.png";
+import cap from "../assets/images/beanie.png";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+function Home() {
+  // 2. Updated array to match your database structure so ProductCard works
+  const products = [
+    { id: "1", name: "Classic Tote Bag", price: 240, mainImage: tote, colors: [{name: "Black", hex: "#000"}] },
+    { id: "2", name: "Convertible Phone Bag", price: 180, mainImage: phonebag, colors: [{name: "Tan", hex: "#D2B48C"}] },
+    { id: "3", name: "Wool Cashmere Coat", price: 890, mainImage: wool, colors: [{name: "Camel", hex: "#C19A6B"}] },
+    { id: "4", name: "Beanie", price: 45, mainImage: cap, colors: [{name: "Grey", hex: "#808080"}] },
+    { id: "5", name: "Cropped Cardigan", price: 245, mainImage: coat, colors: [{name: "Cream", hex: "#FFFDD0"}] },
+  ];
+
+  return (
+    <div className="w-full bg-white font-sans text-[#1a1a1a] overflow-x-hidden">
+      
+      {/* HERO SECTION */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Hero"
+            className="w-full h-full object-cover object-center md:object-[80%_top]"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto h-full px-8 flex flex-col justify-center md:justify-end pb-0 md:pb-32">
+          <motion.div variants={container} initial="hidden" animate="show" className="max-w-xl">
+            <motion.div variants={item} className="mb-8">
+              <h1 className="text-white text-4xl md:text-5xl font-normal leading-tight tracking-tight mb-2">
+                Elevate Your Style
+              </h1>
+              <p className="text-white text-xl md:text-2xl font-light opacity-90 leading-snug">
+                Timeless Fashion, <br className="md:hidden" /> Sustainable Choices
+              </p>
+            </motion.div>
+            <motion.div variants={item}>
+              <Link 
+                to="/shop" 
+                className="inline-block bg-white text-black px-10 py-3.5 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-xl"
+              >
+                Shop Now
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PHILOSOPHY */}
+      <section className="max-w-7xl mx-auto px-8 py-16 md:py-24 text-left">
+        <p className="text-[14px] md:text-base leading-relaxed max-w-xl text-gray-800 font-medium">
+          Elevate your lifestyle with a more intelligent, superior wardrobe. <br className="hidden md:block"/>
+          Our range is crafted sustainably with longevity in mind.
+        </p>
+      </section>
+
+      {/* CATEGORY GRID */}
+      <section className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-4 mb-20">
+        {[
+          { label: "New Arrivals", img: img1 },
+          { label: "The Casual Edit", img: img2 },
+          { label: "Best-Sellers", img: img3 }
+        ].map((cat, i) => (
+          <Link to="/shop" key={i} className="relative aspect-4/5 md:aspect-3/4 overflow-hidden group cursor-pointer">
+            <img 
+              src={cat.img} 
+              alt={cat.label} 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+            />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors" />
+            <div className="absolute bottom-8 left-8">
+              <span className="text-white text-[11px] font-bold border-b border-white pb-1 tracking-[0.15em] uppercase">
+                {cat.label}
+              </span>
+            </div>
+          </Link>
+        ))}
+      </section>
+
+      {/* PRODUCT GRID - NOW USING DYNAMIC PRODUCTCARD */}
+      <section className="max-w-7xl mx-auto mb-24 overflow-hidden">
+        <h2 className="px-8 text-[10px] md:text-xs uppercase tracking-[0.3em] mb-12 text-gray-400 font-bold">
+          What to Wear Now
+        </h2>
+        
+        <div className="flex flex-nowrap overflow-x-auto gap-x-5 px-8 md:grid md:grid-cols-5 md:overflow-x-visible no-scrollbar">
+          {products.map((prod) => (
+            <div key={prod.id} className="shrink-0 w-[75%] md:w-full">
+              {/* 3. Using your functional ProductCard here */}
+              <ProductCard product={prod} />
+            </div>
+          ))}
+          <div className="shrink-0 w-4 md:hidden"></div>
+        </div>
+      </section>
+
+      {/* FEATURE DUO */}
+      <section className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-4 pb-24">
+        <div className="relative aspect-4/5 overflow-hidden group">
+          <img src={banner1} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="The Smart Chic" />
+          <div className="absolute bottom-10 left-10">
+            <span className="text-white text-[11px] font-bold border-b border-white pb-1 uppercase tracking-[0.2em]">The Smart Chic</span>
+          </div>
+        </div>
+        <div className="relative aspect-4/5 overflow-hidden group">
+          <img src={banner2} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Paris To Go" />
+          <div className="absolute bottom-10 left-10">
+            <span className="text-white text-[11px] font-bold border-b border-white pb-1 uppercase tracking-[0.2em]">Paris To Go</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+
+export default Home;
