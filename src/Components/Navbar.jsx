@@ -6,7 +6,7 @@ import { Menu, X, Search, Heart, ShoppingBag, User, Plus, Minus } from "lucide-r
 // Assets & Data
 import image1 from "../assets/images/image 1.png";
 import logo from "../assets/images/logo.png";
-import { categories } from "../data/categories";
+import { categories } from "../data/Categories";
 import { featured } from "../data/Featured";
 import { collections } from "../data/Collections";
 
