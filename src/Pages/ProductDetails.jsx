@@ -1,30 +1,31 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion"; // Added missing import
 import { useWishlist } from "../Context/WishlistContext";
-import { useCart } from "../Context/CartContext"; // 1. Added Cart Context
-import { ChevronDown, Check } from "lucide-react"; // Added Check icon
-import productsData from "../../db.json"; // Import product data
+import { useCart } from "../Context/CartContext";
+import { ChevronDown, Check } from "lucide-react";
+import { products } from "../data/Product"; // Updated to the new local JS data
 
 function ProductDetails() {
   const { id } = useParams();
   const [selectedSize, setSelectedSize] = useState("S");
-  const [isAdding, setIsAdding] = useState(false); // For button feedback
+  const [isAdding, setIsAdding] = useState(false);
 
-  const { addToCart } = useCart(); // 2. Access addToCart function
+  const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
 
-  // Find product from static data
-  const product = productsData.products.find(p => p.id === id);
+  // Find product from static data (Using Number() since IDs are now numbers)
+  const product = products.find(p => p.id === Number(id));
 
   // Initialize selected color
-  const [selectedColor, setSelectedColor] = useState(() => {
-    if (product && product.colors && product.colors.length > 0) {
-      return product.colors[0].name;
-    }
-    return "";
-  });
+  const [selectedColor, setSelectedColor] = useState("");
 
-  // 3. Handle Add to Cart Logic
+  useEffect(() => {
+    if (product && product.colors && product.colors.length > 0) {
+      setSelectedColor(product.colors[0].name);
+    }
+  }, [product]);
+
   const handleAddToCart = () => {
     setIsAdding(true);
     
@@ -34,7 +35,6 @@ function ProductDetails() {
       selectedSize,
     });
 
-    // Reset button after 1.5 seconds
     setTimeout(() => {
       setIsAdding(false);
     }, 1500);
@@ -47,7 +47,7 @@ function ProductDetails() {
   );
 
   return (
-    <div className="max-w-360 mx-auto px-6 md:px-10 py-12 font-sans mt-16">
+    <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 font-sans mt-16">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
         
         {/* LEFT: MULTI-IMAGE GALLERY */}
@@ -59,7 +59,7 @@ function ProductDetails() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="aspect-3/4 bg-[#F9F9F9] overflow-hidden"
+                className="aspect-[3/4] bg-[#F9F9F9] overflow-hidden"
               >
                 <img 
                   src={img} 
@@ -69,7 +69,7 @@ function ProductDetails() {
               </motion.div>
             ))
           ) : (
-            <div className="aspect-3/4 bg-[#F9F9F9]">
+            <div className="aspect-[3/4] bg-[#F9F9F9]">
                <img src={product.mainImage} alt={product.name} className="w-full h-full object-cover" />
             </div>
           )}

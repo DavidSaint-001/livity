@@ -1,16 +1,16 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SlidersHorizontal, ChevronDown, Loader2 } from "lucide-react";
+import { SlidersHorizontal, ChevronDown } from "lucide-react";
 import FilterSidebar from "../Components/FilterSidebar";
 import ProductCard from "../Components/ProductCard";
+// IMPORT YOUR LOCAL DATA HERE
+import { products as dbProducts } from "../data/Product";
 
 function Shop() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchParams] = useSearchParams();
   
-  // States for Data and UI
-  const [dbProducts, setDbProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // UI States
   const [selectedColors, setSelectedColors] = useState([]);
   const [selectedPrices, setSelectedPrices] = useState([]);
 
@@ -18,56 +18,32 @@ function Shop() {
   const categoryFilter = searchParams.get("filter");
   const searchTerm = searchParams.get("search");
 
-  // MASTER FETCH EFFECT: Handles Initial Load, Category Changes, and Search
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      
-      // json-server global search uses 'q'. Category uses 'category'.
-      let url = "http://localhost:3000/products";
-      
-      const queryParams = new URLSearchParams();
-      if (searchTerm) queryParams.append("q", searchTerm);
-      // Note: We fetch all products and filter categories in useMemo for smoother UI, 
-      // but you can also append category to the URL if you prefer server-side filtering.
-      
-      const queryString = queryParams.toString();
-      if (queryString) url += `?${queryString}`;
-
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Network response was not ok");
-        const data = await res.json();
-        setDbProducts(data);
-      } catch (error) {
-        console.error("Database connection failed:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [searchTerm]); // Re-fetch when search changes. Category is handled by useMemo below.
-
-  // CLIENT-SIDE FILTERING: Handles Categories, Colors, and Prices
+  // CLIENT-SIDE FILTERING & SEARCH
   const filteredProducts = useMemo(() => {
     let filtered = [...dbProducts];
 
-    // 1. Filter by Category
+    // 1. Filter by Search Term (now handled locally)
+    if (searchTerm) {
+      filtered = filtered.filter((p) =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // 2. Filter by Category
     if (categoryFilter) {
       filtered = filtered.filter(
         (p) => p.category.toLowerCase() === categoryFilter.toLowerCase()
       );
     }
 
-    // 2. Filter by Colors
+    // 3. Filter by Colors
     if (selectedColors.length > 0) {
       filtered = filtered.filter((p) =>
         p.colors && p.colors.some((c) => selectedColors.includes(c.name))
       );
     }
 
-    // 3. Filter by Price Range
+    // 4. Filter by Price Range
     if (selectedPrices.length > 0) {
       filtered = filtered.filter((p) => {
         return selectedPrices.some((range) => {
@@ -81,7 +57,7 @@ function Shop() {
     }
 
     return filtered;
-  }, [dbProducts, categoryFilter, selectedColors, selectedPrices]);
+  }, [categoryFilter, searchTerm, selectedColors, selectedPrices]);
 
   return (
     <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 font-sans mt-20">
@@ -107,27 +83,20 @@ function Shop() {
         </button>
       </div>
 
-      {/* Loading State */}
-      {loading ? (
-        <div className="flex flex-col items-center justify-center py-20 gap-4">
-          <Loader2 className="animate-spin text-gray-200" size={32} />
-          <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400">Loading Collection</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
-          ) : (
-            <div className="col-span-full py-20 text-center border border-dashed border-gray-100">
-              <p className="text-gray-400 uppercase tracking-widest text-[11px]">
-                No products found matching your request.
-              </p>
-            </div>
-          )}
-        </div>
-      )}
+      {/* No more loading spinner needed for local data */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <div className="col-span-full py-20 text-center border border-dashed border-gray-100">
+            <p className="text-gray-400 uppercase tracking-widest text-[11px]">
+              No products found matching your request.
+            </p>
+          </div>
+        )}
+      </div>
 
       <FilterSidebar 
         isOpen={isFilterOpen} 
