@@ -11,7 +11,7 @@ import MainLayout from "./Layouts/Mainlayout";
 import NewArrivals from "./Pages/NewArrivals";
 import Sales from "./Pages/Sales";
 import Story from "./Pages/Story";
-import Care  from './Pages/Care';
+import Care from './Pages/Care';
 import Wishlist from './Pages/wishlist';
 import FAQ from "./Pages/Faq";
 import Return from "./Pages/Return";

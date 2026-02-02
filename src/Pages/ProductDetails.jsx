@@ -2,32 +2,27 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext"; // 1. Added Cart Context
-import { motion } from "framer-motion";
 import { ChevronDown, Check } from "lucide-react"; // Added Check icon
+import productsData from "../../db.json"; // Import product data
 
 function ProductDetails() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("S");
   const [isAdding, setIsAdding] = useState(false); // For button feedback
 
   const { addToCart } = useCart(); // 2. Access addToCart function
   const { toggleWishlist, isInWishlist } = useWishlist();
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-        if (data.colors && data.colors.length > 0) {
-          setSelectedColor(data.colors[0].name);
-        }
-      })
-      .catch((err) => {
-        console.error("Error fetching product details:", err);
-      });
-  }, [id]);
+  // Find product from static data
+  const product = productsData.products.find(p => p.id === id);
+
+  // Initialize selected color
+  const [selectedColor, setSelectedColor] = useState(() => {
+    if (product && product.colors && product.colors.length > 0) {
+      return product.colors[0].name;
+    }
+    return "";
+  });
 
   // 3. Handle Add to Cart Logic
   const handleAddToCart = () => {
