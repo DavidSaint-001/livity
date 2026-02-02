@@ -74,13 +74,25 @@ function Shop() {
         <button className="flex items-center gap-2 hover:opacity-50 transition-opacity">
           Sort <ChevronDown size={14} />
         </button>
-        
-        <button 
+
+        <button
           onClick={() => setIsFilterOpen(true)}
           className="flex items-center gap-2 hover:opacity-50 transition-opacity"
         >
           Filter <SlidersHorizontal size={14} />
         </button>
+
+        {(selectedColors.length > 0 || selectedPrices.length > 0) && (
+          <button
+            onClick={() => {
+              setSelectedColors([]);
+              setSelectedPrices([]);
+            }}
+            className="flex items-center gap-2 hover:opacity-50 transition-opacity text-red-500"
+          >
+            Clear Filters
+          </button>
+        )}
       </div>
 
       {/* No more loading spinner needed for local data */}

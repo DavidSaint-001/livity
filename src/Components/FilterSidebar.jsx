@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { label } from "framer-motion/client";
 import { X } from "lucide-react";
+import { useState, useEffect } from "react";
 
 
 const filterColors =[
@@ -13,6 +13,9 @@ const filterColors =[
 
 
 const FilterSidebar = ({ isOpen, onClose, selectedColors, onColorChange, selectedPrices, onPriceChange }) => {
+    const [tempSelectedColors, setTempSelectedColors] = useState(selectedColors);
+    const [tempSelectedPrices, setTempSelectedPrices] = useState(selectedPrices);
+
     return (
         <>
         {isOpen && (
@@ -45,7 +48,7 @@ const FilterSidebar = ({ isOpen, onClose, selectedColors, onColorChange, selecte
                 <div className="grid grid-cols-2 gap-4">
                     {filterColors.map((color) => (
                         <label key={color.name} className="flex items-center gap-3 cursor-pointer group">
-                            <input type="checkbox" checked={selectedColors.includes(color.name)} onChange={(e) => { if (e.target.checked) onColorChange([...selectedColors, color.name]); else onColorChange(selectedColors.filter(c => c !== color.name)); }} className="hidden peer" />
+                            <input type="checkbox" checked={tempSelectedColors.includes(color.name)} onChange={(e) => { if (e.target.checked) setTempSelectedColors([...tempSelectedColors, color.name]); else setTempSelectedColors(tempSelectedColors.filter(c => c !== color.name)); }} className="hidden peer" />
                             <div className="w-5 h-5 rounded-full  border border-gray-200 peer-checked:border-black p-0.5 transition-all">
                              <div className="w-5 h-5 rounded-full" style={{ backgroundColor: color.hex}} />
                             </div>
@@ -62,7 +65,7 @@ const FilterSidebar = ({ isOpen, onClose, selectedColors, onColorChange, selecte
                 <div className="space-y-4">
                     {["under $100", "$100 - $250", "$250 - $500", "over $500"].map((range) => (
                         <label key={range} className="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" checked={selectedPrices.includes(range)} onChange={(e) => { if (e.target.checked) onPriceChange([...selectedPrices, range]); else onPriceChange(selectedPrices.filter(p => p !== range)); }} className="w-4 h-4 border-gray-300 accent-black" />
+                            <input type="checkbox" checked={tempSelectedPrices.includes(range)} onChange={(e) => { if (e.target.checked) setTempSelectedPrices([...tempSelectedPrices, range]); else setTempSelectedPrices(tempSelectedPrices.filter(p => p !== range)); }} className="w-4 h-4 border-gray-300 accent-black" />
                             <span className="text-[13px] text-gray-600">{range}</span>
                         </label>
                     ))} 
@@ -71,8 +74,8 @@ const FilterSidebar = ({ isOpen, onClose, selectedColors, onColorChange, selecte
 
             {/* Footer Buttons */}
             <div className="mt-auto pt-10 grid grid-cols-2 gap-4 border-t border-gray-100">
-            <button onClick={() => { onColorChange([]); onPriceChange([]); }} className="py-4 text-[11px] font-bold uppercase tracking-widest border border-black hover:bg-50 transition-colors">Clear All</button>
-            <button onClick={onClose} className="py-4 text-[11px] font-bold uppercase tracking-widest border border-black hover:bg-800 transition-colors">Apply</button>
+            <button onClick={() => { setTempSelectedColors([]); setTempSelectedPrices([]); }} className="py-4 text-[11px] font-bold uppercase tracking-widest border border-black hover:bg-50 transition-colors">Clear All</button>
+            <button onClick={() => { onColorChange(tempSelectedColors); onPriceChange(tempSelectedPrices); onClose(); }} className="py-4 text-[11px] font-bold uppercase tracking-widest border border-black hover:bg-800 transition-colors">Apply</button>
             </div>
         </motion.div>
         </>

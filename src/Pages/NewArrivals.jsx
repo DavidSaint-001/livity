@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductCard from "../Components/ProductCard";
 // Import your local data
-import { products as allProducts } from "../data/products";
+import { products as allProducts } from "../data/Product";
 
 function NewArrivals() {
   // Use useMemo to sort and slice the products locally

@@ -448,7 +448,7 @@ export const products = [
     "colors": [{ "name": "Cream", "hex": "#FFFDD0" }]
   },
   {
-    "id": 38,
+    "id": 41,
     "name": "Linen Shorts S1",
     "price": 85,
     "onSale": false,
