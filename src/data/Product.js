@@ -235,7 +235,6 @@ export const products = [
       { "name": "White", "hex": "#FFFFFF" }
     ]
   },
-  // IDs 21-40 truncated for brevity but they should follow the same pattern...
   {
     "id": 38,
     "name": "Short S1",
