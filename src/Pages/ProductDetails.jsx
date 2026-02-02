@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useWishlist } from "../Context/WishlistContext";
-import { useCart } from "../context/CartContext"; // 1. Added Cart Context
+import { useCart } from "../Context/CartContext"; // 1. Added Cart Context
 import { motion } from "framer-motion";
 import { ChevronDown, Check } from "lucide-react"; // Added Check icon
 
