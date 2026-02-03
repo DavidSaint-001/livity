@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SlidersHorizontal, ChevronDown } from "lucide-react";
 import FilterSidebar from "../Components/FilterSidebar";
-import ProductCard from "../Components/ProductCard";
+import ProductCard from "@/Components/ProductCard";
 // IMPORT YOUR LOCAL DATA HERE
 import { products as dbProducts } from "../data/Product";
 

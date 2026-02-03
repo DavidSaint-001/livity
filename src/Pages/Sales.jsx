@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Tag } from "lucide-react";
-import ProductCard from "../Components/ProductCard";
+import ProductCard from "@/Components/ProductCard";
 // Import from your local data file
 import { products as allProducts } from "../data/Product";
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import ProductCard from "../Components/ProductCard"; // 1. Import your working component
+import ProductCard from "@/Components/ProductCard"; // 1. Import your working component
 
 // ASSETS
 import heroImage from "../assets/images/hero bg.png";

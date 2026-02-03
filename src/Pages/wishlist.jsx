@@ -1,5 +1,5 @@
 import { useWishlist } from "../Context/WishlistContext";
-import ProductCard from "../Components/ProductCard";
+import ProductCard from "@/Components/ProductCard";
 
 const Wishlist = () => {
   const { wishlist } = useWishlist();

@@ -6,8 +6,8 @@ import { useCart } from "../Context/CartContext";
 import { useRecentlyViewed } from "../hooks/useRecentlyViewed";
 import { useAuth } from "../Context/AuthContext"; // Added Auth Hook
 import { ChevronDown, Check, Star } from "lucide-react"; 
-import { products } from "../data/Product"; 
-import ProductCard from "../Components/ProductCard";
+import { products } from "../data/Product";
+import ProductCard from "@/Components/ProductCard";
 
 function ProductDetails() {
   const { id } = useParams();
