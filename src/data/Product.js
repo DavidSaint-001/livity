@@ -236,19 +236,6 @@ export const products = [
     ]
   },
   {
-    "id": 38,
-    "name": "Short S1",
-    "price": 210,
-    "originalPrice": 300,
-    "onSale": true,
-    "category": "Shorts",
-    "mainImage": "/Product/S1.jpg",
-    "gallery": ["/Product/S1.jpg"],
-    "description": "Nice Shorts",
-    "colors": [{ "name": "Matte Black", "hex": "#212121" }]
-  },
-  // --- SALE ITEMS (IDs 21 - 30) ---
-  {
     "id": 21,
     "name": "Leather Card Holder L6",
     "price": 45,
@@ -270,7 +257,11 @@ export const products = [
     "mainImage": "/Product/L8.jpg",
     "gallery": ["/Product/L8.jpg"],
     "description": "Full-grain leather with a custom brushed-steel buckle.",
-    "colors": [{ "name": "Black", "hex": "#000000" }]
+    "specs": { "material": "Bridle Leather", "origin": "London, UK", "care": "Buff with soft cloth" },
+    "colors": [{ "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 2201, "user": "David W.", "rating": 5, "comment": "The most durable belt I've owned.", "date": "Jan 10, 2026" }
+    ]
   },
   {
     "id": 23,
