@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext"; // 1. Import Auth Hook
 
@@ -11,18 +10,16 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // 3. Create the user object
-    const userData = { 
-      email: email, 
-      name: email.split('@')[0] 
-    };
-    
-    // 4. Use the Context Login (it handles localStorage for you automatically)
-    login(userData);
-    
-    // 5. Redirect to profile - No reload needed!
-    navigate("/profile");
+
+    try {
+      // 3. Use the Context Login
+      login(email, password);
+
+      // 4. Redirect to profile - No reload needed!
+      navigate("/profile");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (

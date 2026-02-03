@@ -6,21 +6,15 @@ import { useAuth } from "../Context/AuthContext"; // Import Auth Hook
 export default function Signup() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
-  const { login } = useAuth(); // Get login function
+  const { signup } = useAuth(); // Get signup function
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // 1. Create the user object from form data
-    const userData = { 
-      name: formData.name, 
-      email: formData.email 
-    };
 
-    // 2. Log them in immediately
-    login(userData);
+    // 1. Sign up the user
+    signup(formData.email, formData.password, formData.name);
 
-    // 3. Send them to the profile or home
+    // 2. Send them to the profile or home
     navigate("/profile");
   };
 
