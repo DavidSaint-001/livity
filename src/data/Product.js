@@ -8,10 +8,15 @@ export const products = [
     "category": "Leather Goods",
     "mainImage": "/Product/L1.jpg",
     "gallery": ["/Product/L1.jpg"],
-    "description": "Premium handcrafted leather.",
+    "description": "Premium handcrafted leather designed for longevity.",
+    "specs": { "material": "Full-grain Leather", "origin": "Italy", "care": "Leather Conditioner" },
     "colors": [
       { "name": "Noir", "hex": "#1a1a1a" },
       { "name": "Cognac", "hex": "#8B4513" }
+    ],
+    "reviews": [
+      { "id": 101, "user": "Elena G.", "rating": 5, "comment": "The patina develops beautifully over time.", "date": "Jan 12, 2026" },
+      { "id": 102, "user": "Marcus V.", "rating": 4, "comment": "Sturdy and elegant.", "date": "Feb 01, 2026" }
     ]
   },
   {
@@ -21,44 +26,15 @@ export const products = [
     "category": "Leather Goods",
     "mainImage": "/Product/L2.jpg",
     "gallery": ["/Product/L2.jpg"],
-    "description": "Elegant leather design.",
+    "description": "Elegant leather design with reinforced stitching.",
+    "specs": { "material": "Top-grain Leather", "origin": "Spain", "care": "Wipe with damp cloth" },
     "colors": [
       { "name": "Tan", "hex": "#D2B48C" },
       { "name": "Coffee", "hex": "#4B3621" }
+    ],
+    "reviews": [
+      { "id": 201, "user": "Sophia R.", "rating": 5, "comment": "Perfect size for my daily essentials.", "date": "Dec 20, 2025" }
     ]
-  },
-  {
-    "id": 3,
-    "name": "Leather Item L3",
-    "price": 110,
-    "category": "Leather Goods",
-    "mainImage": "/Product/L3.jpg",
-    "gallery": ["/Product/L3.jpg"],
-    "description": "Minimalist leather essential.",
-    "colors": [{ "name": "Stone", "hex": "#877F7D" }]
-  },
-  {
-    "id": 4,
-    "name": "Leather Item L4",
-    "price": 140,
-    "category": "Leather Goods",
-    "mainImage": "/Product/L4.jpg",
-    "gallery": ["/Product/L4.jpg"],
-    "description": "Durable textured leather.",
-    "colors": [
-      { "name": "Black", "hex": "#000000" },
-      { "name": "Slate", "hex": "#708090" }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Leather Item L5",
-    "price": 150,
-    "category": "Leather Goods",
-    "mainImage": "/Product/L5.jpg",
-    "gallery": ["/Product/L5.jpg"],
-    "description": "Luxury leather finish.",
-    "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
   },
   {
     "id": 6,
@@ -69,170 +45,15 @@ export const products = [
     "category": "Bags",
     "mainImage": "/Product/B1.jpg",
     "gallery": ["/Product/B1.jpg"],
-    "description": "Spacious travel bag.",
+    "description": "Spacious travel bag with modular compartments.",
+    "specs": { "material": "Ballistic Nylon", "origin": "Vietnam", "care": "Spot clean only" },
     "colors": [
       { "name": "Olive", "hex": "#556B2F" },
       { "name": "Charcoal", "hex": "#36454F" }
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Baggage B2",
-    "price": 220,
-    "category": "Bags",
-    "mainImage": "/Product/B2.jpg",
-    "gallery": ["/Product/B2.jpg"],
-    "description": "Urban daily backpack.",
-    "colors": [
-      { "name": "Navy", "hex": "#000080" },
-      { "name": "Ash", "hex": "#B2BEB5" }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Baggage B3",
-    "price": 280,
-    "category": "Bags",
-    "mainImage": "/Product/B3.jpg",
-    "gallery": ["/Product/B3.jpg"],
-    "description": "Premium messenger bag.",
-    "colors": [{ "name": "Mocha", "hex": "#A38068" }]
-  },
-  {
-    "id": 9,
-    "name": "Baggage B4",
-    "price": 210,
-    "category": "Bags",
-    "mainImage": "/Product/B4.jpg",
-    "gallery": ["/Product/B4.jpg"],
-    "description": "Slim laptop carrier.",
-    "colors": [{ "name": "Black", "hex": "#000000" }]
-  },
-  {
-    "id": 10,
-    "name": "Accessory A1",
-    "price": 45,
-    "category": "Accessories",
-    "mainImage": "/Product/A1.jpg",
-    "gallery": ["/Product/A1.jpg"],
-    "description": "Sophisticated accessory.",
-    "colors": [
-      { "name": "Gold", "hex": "#D4AF37" },
-      { "name": "Silver", "hex": "#C0C0C0" }
-    ]
-  },
-  {
-    "id": 11,
-    "name": "Accessory A2",
-    "price": 55,
-    "category": "Accessories",
-    "mainImage": "/Product/A2.jpg",
-    "gallery": ["/Product/A2.jpg"],
-    "description": "Modern style piece.",
-    "colors": [{ "name": "Clear", "hex": "#FFFFFF" }]
-  },
-  {
-    "id": 12,
-    "name": "Accessory A3",
-    "price": 40,
-    "category": "Accessories",
-    "mainImage": "/Product/A3.jpg",
-    "gallery": ["/Product/A3.jpg"],
-    "description": "Classic finishing touch.",
-    "colors": [{ "name": "Cream", "hex": "#FFFDD0" }]
-  },
-  {
-    "id": 13,
-    "name": "Accessory A4",
-    "price": 60,
-    "category": "Accessories",
-    "mainImage": "/Product/A4.jpg",
-    "gallery": ["/Product/A4.jpg"],
-    "description": "Signature detail item.",
-    "colors": [{ "name": "Tortoise", "hex": "#2E1A05" }]
-  },
-  {
-    "id": 14,
-    "name": "Accessory A5",
-    "price": 35,
-    "originalPrice": 50,
-    "onSale": true,
-    "category": "Accessories",
-    "mainImage": "/Product/A5.jpg",
-    "gallery": ["/Product/A5.jpg"],
-    "description": "Versatile accessory.",
-    "colors": [{ "name": "Matte Black", "hex": "#212121" }]
-  },
-  {
-    "id": 15,
-    "name": "Smart Wallet W1",
-    "price": 85,
-    "category": "Leather Goods",
-    "mainImage": "/Product/W1.jpg",
-    "gallery": ["/Product/W1.jpg"],
-    "description": "Compact bifold wallet.",
-    "colors": [
-      { "name": "Navy", "hex": "#000080" },
-      { "name": "Black", "hex": "#000000" }
-    ]
-  },
-  {
-    "id": 16,
-    "name": "Smart Wallet W2",
-    "price": 95,
-    "category": "Leather Goods",
-    "mainImage": "/Product/W2.jpg",
-    "gallery": ["/Product/W2.jpg"],
-    "description": "Grained leather wallet.",
-    "colors": [{ "name": "Wine", "hex": "#722F37" }]
-  },
-  {
-    "id": 17,
-    "name": "Winter Beanie",
-    "price": 35,
-    "category": "Accessories",
-    "mainImage": "/Product/beanie.png",
-    "gallery": ["/Product/beanie.png"],
-    "description": "Warm knit beanie.",
-    "colors": [
-      { "name": "Grey", "hex": "#808080" },
-      { "name": "Oatmeal", "hex": "#E3D5CA" }
-    ]
-  },
-  {
-    "id": 18,
-    "name": "Tailored Shirt S1",
-    "price": 75,
-    "category": "Clothing",
-    "mainImage": "/Product/S1.jpg",
-    "gallery": ["/Product/S1.jpg"],
-    "description": "Formal slim-fit shirt.",
-    "colors": [
-      { "name": "White", "hex": "#FFFFFF" },
-      { "name": "Light Blue", "hex": "#ADD8E6" }
-    ]
-  },
-  {
-    "id": 19,
-    "name": "Tailored Shirt S2",
-    "price": 75,
-    "category": "Clothing",
-    "mainImage": "/Product/S2.jpg",
-    "gallery": ["/Product/S2.jpg"],
-    "description": "Casual cotton shirt.",
-    "colors": [{ "name": "Khaki", "hex": "#C3B091" }]
-  },
-  {
-    "id": 20,
-    "name": "Essential Tee T1",
-    "price": 45,
-    "category": "Clothing",
-    "mainImage": "/Product/T1.jpg",
-    "gallery": ["/Product/T1.jpg"],
-    "description": "High-quality base layer.",
-    "colors": [
-      { "name": "Black", "hex": "#000000" },
-      { "name": "White", "hex": "#FFFFFF" }
+    ],
+    "reviews": [
+      { "id": 601, "user": "Julian P.", "rating": 5, "comment": "Best weekend bag I have ever owned.", "date": "Jan 28, 2026" },
+      { "id": 602, "user": "Mia T.", "rating": 3, "comment": "A bit heavier than expected.", "date": "Feb 02, 2026" }
     ]
   },
   {
@@ -245,7 +66,26 @@ export const products = [
     "mainImage": "/Product/L6.jpg",
     "gallery": ["/Product/L6.jpg"],
     "description": "Ultra-slim profile handcrafted from Italian calfskin.",
-    "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }]
+    "specs": { "material": "Calfskin", "origin": "Florence, Italy", "care": "Avoid direct sunlight" },
+    "colors": [{ "name": "Espresso", "hex": "#3D2B1F" }],
+    "reviews": [
+      { "id": 2101, "user": "Nathan D.", "rating": 5, "comment": "Fits 6 cards easily without bulging.", "date": "Nov 15, 2025" }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Urban Tote B6",
+    "price": 145,
+    "onSale": false,
+    "category": "Bags",
+    "mainImage": "/Product/B6.jpg",
+    "gallery": ["/Product/B6.jpg"],
+    "description": "A modern take on the classic daily tote with internal laptop sleeve.",
+    "specs": { "material": "Organic Cotton Canvas", "origin": "USA", "care": "Hand wash" },
+    "colors": [{ "name": "Grey", "hex": "#808080" }],
+    "reviews": [
+      { "id": 3101, "user": "Clara H.", "rating": 4, "comment": "Simple and clean aesthetic.", "date": "Jan 05, 2026" }
+    ]
   },
   {
     "id": 22,
@@ -273,7 +113,11 @@ export const products = [
     "mainImage": "/Product/L9.jpg",
     "gallery": ["/Product/L9.jpg"],
     "description": "Organize your cables and chargers in premium leather.",
-    "colors": [{ "name": "Cognac", "hex": "#8B4513" }]
+    "specs": { "material": "Nappa Leather", "origin": "Berlin, Germany", "care": "Store in dust bag" },
+    "colors": [{ "name": "Cognac", "hex": "#8B4513" }],
+    "reviews": [
+      { "id": 2301, "user": "Lisa M.", "rating": 4, "comment": "Beautiful way to keep my chargers organized.", "date": "Feb 01, 2026" }
+    ]
   },
   {
     "id": 24,
@@ -285,7 +129,9 @@ export const products = [
     "mainImage": "/Product/L10.jpg",
     "gallery": ["/Product/L10.jpg"],
     "description": "Padded interior with a minimalist magnetic closure.",
-    "colors": [{ "name": "Slate", "hex": "#708090" }]
+    "specs": { "material": "Suede-lined Leather", "origin": "Paris, France", "care": "Professional clean" },
+    "colors": [{ "name": "Slate", "hex": "#708090" }],
+    "reviews": []
   },
   {
     "id": 25,
@@ -297,7 +143,11 @@ export const products = [
     "mainImage": "/Product/L11.jpg",
     "gallery": ["/Product/L11.jpg"],
     "description": "Hand-stitched suede for effortless sophistication.",
-    "colors": [{ "name": "Sand", "hex": "#C2B280" }]
+    "specs": { "material": "Premium Suede", "origin": "Tuscany, Italy", "care": "Suede brush only" },
+    "colors": [{ "name": "Sand", "hex": "#C2B280" }],
+    "reviews": [
+      { "id": 2501, "user": "Robert F.", "rating": 5, "comment": "Like walking on clouds. Incredible craftsmanship.", "date": "Jan 15, 2026" }
+    ]
   },
   {
     "id": 26,
@@ -309,7 +159,9 @@ export const products = [
     "mainImage": "/Product/L12.jpg",
     "gallery": ["/Product/L12.jpg"],
     "description": "The perfect travel companion for the frequent flyer.",
-    "colors": [{ "name": "Navy", "hex": "#000080" }]
+    "specs": { "material": "Vegetable-tanned Leather", "origin": "Stockholm, Sweden", "care": "Avoid moisture" },
+    "colors": [{ "name": "Navy", "hex": "#000080" }],
+    "reviews": []
   },
   {
     "id": 27,
@@ -320,8 +172,12 @@ export const products = [
     "category": "Leather Goods",
     "mainImage": "/Product/L13.jpg",
     "gallery": ["/Product/L13.jpg"],
-    "description": "Spacious enough for a 3-day trip, stylish enough for any hotel.",
-    "colors": [{ "name": "Noir", "hex": "#1a1a1a" }]
+    "description": "Spacious enough for a 3-day trip.",
+    "specs": { "material": "Reinforced Cowhide", "origin": "Madrid, Spain", "care": "Leather balm" },
+    "colors": [{ "name": "Noir", "hex": "#1a1a1a" }],
+    "reviews": [
+      { "id": 2701, "user": "Karen T.", "rating": 5, "comment": "Expensive, but it will last a lifetime.", "date": "Jan 20, 2026" }
+    ]
   },
   {
     "id": 28,
@@ -333,7 +189,9 @@ export const products = [
     "mainImage": "/Product/L14.jpg",
     "gallery": ["/Product/L14.jpg"],
     "description": "Elevate your workspace with this vegetable-tanned mat.",
-    "colors": [{ "name": "Tan", "hex": "#D2B48C" }]
+    "specs": { "material": "Smooth Leather", "origin": "Tokyo, Japan", "care": "Dust regularly" },
+    "colors": [{ "name": "Tan", "hex": "#D2B48C" }],
+    "reviews": []
   },
   {
     "id": 29,
@@ -345,7 +203,11 @@ export const products = [
     "mainImage": "/Product/L15.jpg",
     "gallery": ["/Product/L15.jpg"],
     "description": "No more jingling keys. Pure silence and style.",
-    "colors": [{ "name": "Black", "hex": "#000000" }]
+    "specs": { "material": "Alloy & Leather", "origin": "Melbourne, Australia", "care": "No maintenance" },
+    "colors": [{ "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 2901, "user": "Sam B.", "rating": 4, "comment": "Simple and effective.", "date": "Feb 02, 2026" }
+    ]
   },
   {
     "id": 30,
@@ -357,20 +219,9 @@ export const products = [
     "mainImage": "/Product/B5.jpg",
     "gallery": ["/Product/B5.jpg"],
     "description": "Weather-resistant canvas with leather accents.",
-    "colors": [{ "name": "Forest", "hex": "#228B22" }]
-  },
-
-  // --- NEW ARRIVALS (IDs 31 - 40) ---
-  {
-    "id": 31,
-    "name": "Urban Tote B6",
-    "price": 145,
-    "onSale": false,
-    "category": "Bags",
-    "mainImage": "/Product/B6.jpg",
-    "gallery": ["/Product/B6.jpg"],
-    "description": "A modern take on the classic daily tote.",
-    "colors": [{ "name": "Grey", "hex": "#808080" }]
+    "specs": { "material": "Waxed Canvas", "origin": "Portland, USA", "care": "Rewax every 2 years" },
+    "colors": [{ "name": "Forest", "hex": "#228B22" }],
+    "reviews": []
   },
   {
     "id": 32,
@@ -381,7 +232,11 @@ export const products = [
     "mainImage": "/Product/B7.jpg",
     "gallery": ["/Product/B7.jpg"],
     "description": "Ergonomic design for the city professional.",
-    "colors": [{ "name": "Charcoal", "hex": "#36454F" }]
+    "specs": { "material": "Recycled Polyester", "origin": "Seoul, Korea", "care": "Wipe clean" },
+    "colors": [{ "name": "Charcoal", "hex": "#36454F" }],
+    "reviews": [
+      { "id": 3201, "user": "Chris Z.", "rating": 5, "comment": "Fits everything for work perfectly.", "date": "Jan 30, 2026" }
+    ]
   },
   {
     "id": 33,
@@ -392,7 +247,9 @@ export const products = [
     "mainImage": "/Product/B8.jpg",
     "gallery": ["/Product/B8.jpg"],
     "description": "Keep your essentials close and your hands free.",
-    "colors": [{ "name": "Mocha", "hex": "#A38068" }]
+    "specs": { "material": "Pebbled Leather", "origin": "Milan, Italy", "care": "Leather cleaner" },
+    "colors": [{ "name": "Mocha", "hex": "#A38068" }],
+    "reviews": []
   },
   {
     "id": 34,
@@ -403,7 +260,11 @@ export const products = [
     "mainImage": "/Product/B9.jpg",
     "gallery": ["/Product/B9.jpg"],
     "description": "Deep navy finish with heavy-duty brass zippers.",
-    "colors": [{ "name": "Navy", "hex": "#000080" }]
+    "specs": { "material": "Heavyweight Twill", "origin": "London, UK", "care": "Spot clean" },
+    "colors": [{ "name": "Navy", "hex": "#000080" }],
+    "reviews": [
+      { "id": 3401, "user": "Oliver P.", "rating": 5, "comment": "The zippers are very high quality.", "date": "Feb 01, 2026" }
+    ]
   },
   {
     "id": 35,
@@ -414,7 +275,9 @@ export const products = [
     "mainImage": "/Product/A6.jpg",
     "gallery": ["/Product/A6.jpg"],
     "description": "Polarized lenses with a premium titanium frame.",
-    "colors": [{ "name": "Silver", "hex": "#C0C0C0" }]
+    "specs": { "material": "Titanium", "origin": "Kyoto, Japan", "care": "Microfiber cloth only" },
+    "colors": [{ "name": "Silver", "hex": "#C0C0C0" }],
+    "reviews": []
   },
   {
     "id": 36,
@@ -425,7 +288,11 @@ export const products = [
     "mainImage": "/Product/A7.jpg",
     "gallery": ["/Product/A7.jpg"],
     "description": "Minimalist face with a genuine leather strap.",
-    "colors": [{ "name": "Black", "hex": "#000000" }]
+    "specs": { "material": "Stainless Steel", "origin": "Zurich, Switzerland", "care": "Avoid extreme heat" },
+    "colors": [{ "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 3601, "user": "Thomas K.", "rating": 5, "comment": "Truly timeless design.", "date": "Jan 28, 2026" }
+    ]
   },
   {
     "id": 37,
@@ -436,18 +303,9 @@ export const products = [
     "mainImage": "/Product/A8.jpg",
     "gallery": ["/Product/A8.jpg"],
     "description": "100% pure silk with a hand-rolled hem.",
-    "colors": [{ "name": "Cream", "hex": "#FFFDD0" }]
-  },
-  {
-    "id": 41,
-    "name": "Linen Shorts S1",
-    "price": 85,
-    "onSale": false,
-    "category": "Shorts",
-    "mainImage": "/Product/S1.jpg",
-    "gallery": ["/Product/S1.jpg"],
-    "description": "Breathable linen for maximum summer comfort.",
-    "colors": [{ "name": "Oatmeal", "hex": "#E3D5CA" }]
+    "specs": { "material": "Mulberry Silk", "origin": "Lyon, France", "care": "Hand wash cold" },
+    "colors": [{ "name": "Cream", "hex": "#FFFDD0" }],
+    "reviews": []
   },
   {
     "id": 39,
@@ -458,7 +316,9 @@ export const products = [
     "mainImage": "/Product/S2.jpg",
     "gallery": ["/Product/S2.jpg"],
     "description": "Classic fit with a slight stretch for daily wear.",
-    "colors": [{ "name": "Khaki", "hex": "#C3B091" }]
+    "specs": { "material": "Cotton Twill", "origin": "Lisbon, Portugal", "care": "Machine wash warm" },
+    "colors": [{ "name": "Khaki", "hex": "#C3B091" }],
+    "reviews": []
   },
   {
     "id": 40,
@@ -469,7 +329,11 @@ export const products = [
     "mainImage": "/Product/S3.jpg",
     "gallery": ["/Product/S3.jpg"],
     "description": "Quick-dry fabric for the lifestyle on the move.",
-    "colors": [{ "name": "Black", "hex": "#000000" }]
+    "specs": { "material": "Recycled Nylon", "origin": "Taiwan", "care": "Machine wash cold" },
+    "colors": [{ "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 4001, "user": "Alex G.", "rating": 4, "comment": "Great for the gym and the beach.", "date": "Feb 01, 2026" }
+    ]
   }
-
+  
 ];
