@@ -1,20 +1,26 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import ProductCard from "@/Components/ProductCard"; // 1. Import your working component
+import ProductCard from "@/Components/ProductCard";
 
 // ASSETS
 import heroImage from "../assets/images/hero bg.png";
+import hero2 from "../assets/images/ai image.png";
+import hero3 from "../assets/images/brown.png";
+import hero4 from "../assets/images/hero 3.png";
+
+import img1 from "../assets/images/img 3.png"; 
+import img2 from "../assets/images/img 2.png";
+import img3 from "../assets/images/img 1.png";
 import tote from "../assets/images/product 4.png";
 import phonebag from "../assets/images/product 3.png";
 import coat from "../assets/images/product 1.png";
-import wool from "../assets/images/product 2.png"
+import wool from "../assets/images/product 2.png";
+import cap from "../assets/images/beanie.png";
 import banner1 from "../assets/images/banner 1.png";
 import banner2 from "../assets/images/banner 2.png";
-import img1 from "../assets/images/img 3.png";
-import img2 from "../assets/images/img 2.png";
-import img3 from "../assets/images/img 1.png";
-import cap from "../assets/images/beanie.png";
 
+// Animation Variants
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -29,7 +35,17 @@ const item = {
 };
 
 function Home() {
-  // 2. Updated array to match your database structure so ProductCard works
+  // HERO IMAGE ROTATION LOGIC
+  const heroImages = [heroImage, hero4, hero2, hero3];
+  const [currentHero, setCurrentHero] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHero((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change every 5 seconds
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
   const products = [
     { id: "1", name: "Classic Tote Bag", price: 240, mainImage: tote, colors: [{name: "Black", hex: "#000"}] },
     { id: "2", name: "Convertible Phone Bag", price: 180, mainImage: phonebag, colors: [{name: "Tan", hex: "#D2B48C"}] },
@@ -41,16 +57,21 @@ function Home() {
   return (
     <div className="w-full bg-white font-sans text-[#1a1a1a] overflow-x-hidden">
       
-      {/* HERO SECTION */}
+      {/* HERO SECTION WITH DYNAMIC CHANGE */}
       <section className="relative w-full h-screen overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Hero"
-            className="w-full h-full object-cover object-center md:object-[80%_top]"
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentHero}
+            src={heroImages[currentHero]}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover object-center md:object-[80%_top]"
           />
-          <div className="absolute inset-0 bg-black/10" />
-        </div>
+        </AnimatePresence>
+        
+        <div className="absolute inset-0 bg-black/15 z-[1]" />
         
         <div className="relative z-10 max-w-7xl mx-auto h-full px-8 flex flex-col justify-center md:justify-end pb-0 md:pb-32">
           <motion.div variants={container} initial="hidden" animate="show" className="max-w-xl">
@@ -71,6 +92,16 @@ function Home() {
               </Link>
             </motion.div>
           </motion.div>
+        </div>
+
+        {/* INDICATOR DASHES */}
+        <div className="absolute bottom-10 left-8 z-20 flex gap-2">
+          {heroImages.map((_, i) => (
+            <div 
+              key={i} 
+              className={`h-[1px] w-8 transition-all duration-500 ${i === currentHero ? "bg-white" : "bg-white/30"}`} 
+            />
+          ))}
         </div>
       </section>
 
@@ -105,7 +136,7 @@ function Home() {
         ))}
       </section>
 
-      {/* PRODUCT GRID - NOW USING DYNAMIC PRODUCTCARD */}
+      {/* PRODUCT GRID */}
       <section className="max-w-7xl mx-auto mb-24 overflow-hidden">
         <h2 className="px-8 text-[10px] md:text-xs uppercase tracking-[0.3em] mb-12 text-gray-400 font-bold">
           What to Wear Now
@@ -114,7 +145,6 @@ function Home() {
         <div className="flex flex-nowrap overflow-x-auto gap-x-5 px-8 md:grid md:grid-cols-5 md:overflow-x-visible no-scrollbar">
           {products.map((prod) => (
             <div key={prod.id} className="shrink-0 w-[75%] md:w-full">
-              {/* 3. Using your functional ProductCard here */}
               <ProductCard product={prod} />
             </div>
           ))}
