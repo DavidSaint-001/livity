@@ -17,35 +17,61 @@ import FAQ from "./Pages/Faq";
 import Return from "./Pages/Return";
 import NotFound from "./Pages/NotFound"; 
 import Profile from "./Pages/Profile";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Loader from "./Components/Loader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // This timer controls how long the logo stays on screen
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <Router>
-      <Routes>
-        {/* All routes inside MainLayout will have the Navbar and Footer */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/new-arrivals" element={<NewArrivals />} />
-          <Route path="/sales" element={<Sales />} />
-          <Route path="/story" element={<Story />} />
-          <Route path="/care" element={<Care />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/returns" element={<Return />} />
-          
-          
-          
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Router>
+   <>
+   <AnimatePresence mode="wait">
+        {loading && <Loader key="loader" />}
+      </AnimatePresence>
+
+      {/* This wrapper ensures content doesn't "jump" while loader is fading */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loading ? 0 : 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <Router>
+   <Routes>
+     {/* All routes inside MainLayout will have the Navbar and Footer */}
+     <Route element={<MainLayout />}>
+       <Route path="/" element={<Home />} />
+       <Route path="/shop" element={<Shop />} />
+       <Route path="/product/:id" element={<ProductDetails />} />
+       <Route path="/cart" element={<Cart />} />
+       <Route path="/checkout" element={<Checkout />} />
+       <Route path="/login" element={<Login />} />
+       <Route path="/signup" element={<Signup />} />
+       <Route path="/profile" element={<Profile />} />
+       <Route path="/new-arrivals" element={<NewArrivals />} />
+       <Route path="/sales" element={<Sales />} />
+       <Route path="/story" element={<Story />} />
+       <Route path="/care" element={<Care />} />
+       <Route path="/wishlist" element={<Wishlist />} />
+       <Route path="/faq" element={<FAQ />} />
+       <Route path="/returns" element={<Return />} />
+       
+       
+       
+       <Route path="*" element={<NotFound />} />
+     </Route>
+   </Routes>
+ </Router>
+      </motion.div>
+   </>
   );
 }
 
