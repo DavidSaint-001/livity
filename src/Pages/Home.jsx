@@ -20,7 +20,6 @@ import cap from "../assets/images/beanie.png";
 import banner1 from "../assets/images/banner 1.png";
 import banner2 from "../assets/images/banner 2.png";
 
-// Animation Variants
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -35,14 +34,13 @@ const item = {
 };
 
 function Home() {
-  // HERO IMAGE ROTATION LOGIC
   const heroImages = [heroImage, hero4, hero2, hero3];
   const [currentHero, setCurrentHero] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentHero((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
@@ -57,8 +55,8 @@ function Home() {
   return (
     <div className="w-full bg-white font-sans text-[#1a1a1a] overflow-x-hidden">
       
-      {/* HERO SECTION WITH DYNAMIC CHANGE */}
-      <section className="relative w-full h-screen overflow-hidden">
+      {/* HERO SECTION - TABLET OPTIMIZED */}
+      <section className="relative w-full h-[100svh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentHero}
@@ -67,26 +65,27 @@ function Home() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover object-center md:object-[80%_top]"
+            // 'object-top' ensures heads aren't cut off on tall tablet screens
+            className="absolute inset-0 w-full h-full object-cover object-top sm:object-center"
           />
         </AnimatePresence>
         
         <div className="absolute inset-0 bg-black/15 z-[1]" />
         
-        <div className="relative z-10 max-w-7xl mx-auto h-full px-8 flex flex-col justify-center md:justify-end pb-0 md:pb-32">
+        <div className="relative z-10 max-w-7xl mx-auto h-full px-6 md:px-12 flex flex-col justify-center md:justify-end pb-12 md:pb-32">
           <motion.div variants={container} initial="hidden" animate="show" className="max-w-xl">
             <motion.div variants={item} className="mb-8">
-              <h1 className="text-white text-4xl md:text-5xl font-normal leading-tight tracking-tight mb-2">
+              <h1 className="text-white text-4xl md:text-6xl font-normal leading-tight tracking-tight mb-2">
                 Elevate Your Style
               </h1>
-              <p className="text-white text-xl md:text-2xl font-light opacity-90 leading-snug">
+              <p className="text-white text-lg md:text-2xl font-light opacity-90 leading-snug">
                 Timeless Fashion, <br className="md:hidden" /> Sustainable Choices
               </p>
             </motion.div>
             <motion.div variants={item}>
               <Link 
                 to="/shop" 
-                className="inline-block bg-white text-black px-10 py-3.5 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-xl"
+                className="inline-block bg-white text-black px-10 py-4 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-xl"
               >
                 Shop Now
               </Link>
@@ -94,8 +93,7 @@ function Home() {
           </motion.div>
         </div>
 
-        {/* INDICATOR DASHES */}
-        <div className="absolute bottom-10 left-8 z-20 flex gap-2">
+        <div className="absolute bottom-10 left-6 md:left-12 z-20 flex gap-2">
           {heroImages.map((_, i) => (
             <div 
               key={i} 
@@ -106,29 +104,29 @@ function Home() {
       </section>
 
       {/* PHILOSOPHY */}
-      <section className="max-w-7xl mx-auto px-8 py-16 md:py-24 text-left">
-        <p className="text-[14px] md:text-base leading-relaxed max-w-xl text-gray-800 font-medium">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 text-left">
+        <p className="text-[15px] md:text-lg leading-relaxed max-w-xl text-gray-800 font-medium">
           Elevate your lifestyle with a more intelligent, superior wardrobe. <br className="hidden md:block"/>
           Our range is crafted sustainably with longevity in mind.
         </p>
       </section>
 
-      {/* CATEGORY GRID */}
-      <section className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-4 mb-20">
+      {/* CATEGORY GRID - RESPONSIVE FOR TABLET */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
         {[
           { label: "New Arrivals", img: img1 },
           { label: "The Casual Edit", img: img2 },
           { label: "Best-Sellers", img: img3 }
         ].map((cat, i) => (
-          <Link to="/shop" key={i} className="relative aspect-4/5 md:aspect-3/4 overflow-hidden group cursor-pointer">
+          <Link to="/shop" key={i} className="relative aspect-[3/4] overflow-hidden group cursor-pointer">
             <img 
               src={cat.img} 
               alt={cat.label} 
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-110" 
             />
             <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors" />
-            <div className="absolute bottom-8 left-8">
-              <span className="text-white text-[11px] font-bold border-b border-white pb-1 tracking-[0.15em] uppercase">
+            <div className="absolute bottom-6 left-6">
+              <span className="text-white text-[10px] font-bold border-b border-white pb-1 tracking-[0.15em] uppercase">
                 {cat.label}
               </span>
             </div>
@@ -136,15 +134,15 @@ function Home() {
         ))}
       </section>
 
-      {/* PRODUCT GRID */}
+      {/* PRODUCT GRID - IMPROVED TABLET WIDTHS */}
       <section className="max-w-7xl mx-auto mb-24 overflow-hidden">
-        <h2 className="px-8 text-[10px] md:text-xs uppercase tracking-[0.3em] mb-12 text-gray-400 font-bold">
+        <h2 className="px-6 md:px-12 text-[10px] md:text-xs uppercase tracking-[0.3em] mb-12 text-gray-400 font-bold">
           What to Wear Now
         </h2>
         
-        <div className="flex flex-nowrap overflow-x-auto gap-x-5 px-8 md:grid md:grid-cols-5 md:overflow-x-visible no-scrollbar">
+        <div className="flex flex-nowrap overflow-x-auto gap-x-5 px-6 md:px-12 md:grid md:grid-cols-5 md:overflow-x-visible no-scrollbar">
           {products.map((prod) => (
-            <div key={prod.id} className="shrink-0 w-[75%] md:w-full">
+            <div key={prod.id} className="shrink-0 w-[75%] sm:w-[45%] md:w-full">
               <ProductCard product={prod} />
             </div>
           ))}
@@ -153,17 +151,17 @@ function Home() {
       </section>
 
       {/* FEATURE DUO */}
-      <section className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-4 pb-24">
-        <div className="relative aspect-4/5 overflow-hidden group">
-          <img src={banner1} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="The Smart Chic" />
-          <div className="absolute bottom-10 left-10">
-            <span className="text-white text-[11px] font-bold border-b border-white pb-1 uppercase tracking-[0.2em]">The Smart Chic</span>
+      <section className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 gap-6 pb-24">
+        <div className="relative aspect-[4/5] overflow-hidden group">
+          <img src={banner1} className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" alt="The Smart Chic" />
+          <div className="absolute bottom-8 left-8">
+            <span className="text-white text-[10px] font-bold border-b border-white pb-1 uppercase tracking-[0.2em]">The Smart Chic</span>
           </div>
         </div>
-        <div className="relative aspect-4/5 overflow-hidden group">
-          <img src={banner2} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Paris To Go" />
-          <div className="absolute bottom-10 left-10">
-            <span className="text-white text-[11px] font-bold border-b border-white pb-1 uppercase tracking-[0.2em]">Paris To Go</span>
+        <div className="relative aspect-[4/5] overflow-hidden group">
+          <img src={banner2} className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" alt="Paris To Go" />
+          <div className="absolute bottom-8 left-8">
+            <span className="text-white text-[10px] font-bold border-b border-white pb-1 uppercase tracking-[0.2em]">Paris To Go</span>
           </div>
         </div>
       </section>
