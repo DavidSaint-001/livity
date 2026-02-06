@@ -15,7 +15,7 @@ const BackButton = ({ variant = "dark" }) => {
       animate={{ opacity: 1, x: 0 }}
       whileHover={{ x: -4 }}
       onClick={() => navigate(-1)}
-      className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] mb-10 transition-all hover:opacity-60 ${
+      className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] mb-10 transition-all hover:opacity-60 cursor-pointer ${
         variant === "light" ? "text-white" : "text-black"
       }`}
     >
