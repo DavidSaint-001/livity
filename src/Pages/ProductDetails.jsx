@@ -58,7 +58,7 @@ function ProductDetails() {
   if (!product) return <div className="h-screen flex items-center justify-center uppercase tracking-[0.3em] text-[11px]">Product Not Found</div>;
 
   return (
-    <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 font-sans mt-16">
+    <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 font-sans mt-24 md:mt-16">
       <BackButton />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
         {/* LEFT: GALLERY */}

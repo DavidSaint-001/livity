@@ -61,7 +61,8 @@ function Shop() {
   }, [categoryFilter, searchTerm, selectedColors, selectedPrices]);
 
   return (
-    <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 font-sans mt-20">
+    <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 font-sans mt-24 md:mt-20">
+      <BackButton />
       <header className="mb-10">
         <h1 className="text-2xl font-light tracking-tight mb-2">
           {searchTerm ? `Results for "${searchTerm}"` : (categoryFilter ? categoryFilter : "Shop All")}
