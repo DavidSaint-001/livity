@@ -1,4 +1,5 @@
 import { useWishlist } from "../Context/WishlistContext";
+import BackButton from "../Components/BackButton";
 import ProductCard from "@/Components/ProductCard";
 
 const Wishlist = () => {
@@ -6,6 +7,7 @@ const Wishlist = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 mt-10">
+      <BackButton />
       <h1 className="text-2xl font-light uppercase tracking-widest mb-10">My Wishlist</h1>
       
       {wishlist.length === 0 ? (

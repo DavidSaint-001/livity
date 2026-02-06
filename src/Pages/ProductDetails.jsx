@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
 import { useRecentlyViewed } from "../hooks/useRecentlyViewed";
 import { useAuth } from "../Context/AuthContext"; // Added Auth Hook
-import { ChevronDown, Check, Star } from "lucide-react"; 
+import { ChevronDown, Check, Star } from "lucide-react";
 import { products } from "../data/Product";
 import ProductCard from "@/Components/ProductCard";
+import BackButton from "../Components/BackButton";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -58,6 +59,7 @@ function ProductDetails() {
 
   return (
     <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 font-sans mt-16">
+      <BackButton />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
         {/* LEFT: GALLERY */}
         <div className="lg:col-span-8 space-y-4">

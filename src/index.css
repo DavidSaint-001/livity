@@ -18,3 +18,11 @@ body {
 .checkout-input:focus {
   border-color: #000000;
 }
+
+@layer components {
+  .checkout-input {
+    @apply w-full border-b border-gray-200 py-3 text-[13px] font-light 
+           focus:outline-none focus:border-black transition-colors 
+           placeholder:text-gray-300 placeholder:uppercase placeholder:tracking-widest placeholder:text-[10px];
+  }
+}

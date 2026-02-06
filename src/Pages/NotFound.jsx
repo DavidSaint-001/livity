@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import BackButton from "../Components/BackButton";
 
 const NotFound = () => {
   return (

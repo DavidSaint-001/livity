@@ -5,5 +5,6 @@ export const collections = [
   "Online Exclusive",
   "Knitwear",
   "Total Look",
+  "Suits & Tailoring",
   "Basics"
 ];

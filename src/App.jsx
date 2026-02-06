@@ -20,6 +20,7 @@ import Profile from "./Pages/Profile";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "./Components/Loader";
+import CustomDesign from "./Pages/CustomDesign";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -63,6 +64,7 @@ function App() {
        <Route path="/wishlist" element={<Wishlist />} />
        <Route path="/faq" element={<FAQ />} />
        <Route path="/returns" element={<Return />} />
+       <Route path="/custom-design" element={<CustomDesign />} />
        
        
        

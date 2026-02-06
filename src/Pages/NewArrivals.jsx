@@ -15,6 +15,7 @@ function NewArrivals() {
 
   return (
     <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 font-sans mt-20">
+      <BackButton />
       <header className="mb-16">
         <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-2">
           The Latest

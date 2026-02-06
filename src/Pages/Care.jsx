@@ -5,6 +5,7 @@ import image from "../assets/images/img 1.png";
 const Care = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 mt-10 font-sans">
+      <BackButton />
       <header className="max-w-3xl mb-20">
         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">Preservation</span>
         <h1 className="text-4xl font-light tracking-tight mt-4 mb-6">Product Care Guide</h1>

@@ -334,6 +334,284 @@ export const products = [
     "reviews": [
       { "id": 4001, "user": "Alex G.", "rating": 4, "comment": "Great for the gym and the beach.", "date": "Feb 01, 2026" }
     ]
+  },
+  {
+    "id": 3,
+    "name": "Leather Briefcase L3",
+    "price": 280,
+    "originalPrice": 350,
+    "onSale": true,
+    "category": "Leather Goods",
+    "mainImage": "/Product/L3.jpg",
+    "gallery": ["/Product/L3.jpg"],
+    "description": "Professional leather briefcase for the modern executive.",
+    "specs": { "material": "Full-grain Leather", "origin": "Germany", "care": "Leather conditioner" },
+    "colors": [{ "name": "Noir", "hex": "#1a1a1a" }],
+    "reviews": [
+      { "id": 301, "user": "James W.", "rating": 5, "comment": "Premium quality for the office.", "date": "Jan 25, 2026" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Leather Messenger L4",
+    "price": 220,
+    "originalPrice": 300,
+    "onSale": true,
+    "category": "Leather Goods",
+    "mainImage": "/Product/L4.jpg",
+    "gallery": ["/Product/L4.jpg"],
+    "description": "Vintage-inspired messenger bag with adjustable strap.",
+    "specs": { "material": "Vintage Leather", "origin": "Argentina", "care": "Oil occasionally" },
+    "colors": [{ "name": "Cognac", "hex": "#8B4513" }, { "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 401, "user": "Michael S.", "rating": 4, "comment": "Great for travel and daily use.", "date": "Feb 03, 2026" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Leather Tote L5",
+    "price": 165,
+    "originalPrice": 240,
+    "onSale": true,
+    "category": "Leather Goods",
+    "mainImage": "/Product/L5.jpg",
+    "gallery": ["/Product/L5.jpg"],
+    "description": "Spacious everyday tote with interior organization.",
+    "specs": { "material": "Pebbled Leather", "origin": "Portugal", "care": "Wipe with cloth" },
+    "colors": [{ "name": "Caramel", "hex": "#C0734A" }, { "name": "Navy", "hex": "#000080" }],
+    "reviews": [
+      { "id": 501, "user": "Victoria R.", "rating": 5, "comment": "Perfect size and beautiful craftsmanship.", "date": "Jan 30, 2026" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Crossbody Bag B2",
+    "price": 155,
+    "originalPrice": 220,
+    "onSale": true,
+    "category": "Bags",
+    "mainImage": "/Product/B2.jpg",
+    "gallery": ["/Product/B2.jpg"],
+    "description": "Compact crossbody for urban adventurers.",
+    "specs": { "material": "Ballistic Nylon", "origin": "Vietnam", "care": "Spot clean" },
+    "colors": [{ "name": "Black", "hex": "#000000" }, { "name": "Grey", "hex": "#808080" }],
+    "reviews": [
+      { "id": 701, "user": "Emily T.", "rating": 5, "comment": "Very durable and lightweight.", "date": "Jan 28, 2026" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Backpack B3",
+    "price": 185,
+    "originalPrice": 260,
+    "onSale": true,
+    "category": "Bags",
+    "mainImage": "/Product/B3.jpg",
+    "gallery": ["/Product/B3.jpg"],
+    "description": "Minimalist backpack with laptop compartment.",
+    "specs": { "material": "Recycled Polyester", "origin": "USA", "care": "Water resistant" },
+    "colors": [{ "name": "Navy", "hex": "#000080" }],
+    "reviews": [
+      { "id": 801, "user": "Jordan L.", "rating": 4, "comment": "Great for school and travel.", "date": "Feb 02, 2026" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Day Pack B4",
+    "price": 95,
+    "originalPrice": 140,
+    "onSale": true,
+    "category": "Bags",
+    "mainImage": "/Product/B4.jpg",
+    "gallery": ["/Product/B4.jpg"],
+    "description": "Compact daypack for short excursions.",
+    "specs": { "material": "Canvas Blend", "origin": "Japan", "care": "Hand wash" },
+    "colors": [{ "name": "Olive", "hex": "#556B2F" }],
+    "reviews": []
+  },
+  {
+    "id": 10,
+    "name": "Wallet L7",
+    "price": 55,
+    "originalPrice": 85,
+    "onSale": true,
+    "category": "Leather Goods",
+    "mainImage": "/Product/L7.jpg",
+    "gallery": ["/Product/L7.jpg"],
+    "description": "Full leather RFID-blocking wallet with 8 card slots.",
+    "specs": { "material": "Nappa Leather", "origin": "Italy", "care": "Wipe clean" },
+    "colors": [{ "name": "Tan", "hex": "#D2B48C" }, { "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 1001, "user": "Patrick D.", "rating": 5, "comment": "Excellent quality and protection.", "date": "Jan 22, 2026" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Sunglasses A1",
+    "price": 125,
+    "originalPrice": 180,
+    "onSale": true,
+    "category": "Accessories",
+    "mainImage": "/Product/A1.jpg",
+    "gallery": ["/Product/A1.jpg"],
+    "description": "UV protection with acetate frame.",
+    "specs": { "material": "Acetate & Glass", "origin": "France", "care": "Keep in case" },
+    "colors": [{ "name": "Black", "hex": "#000000" }],
+    "reviews": []
+  },
+  {
+    "id": 12,
+    "name": "Reading Glasses A2",
+    "price": 85,
+    "originalPrice": 120,
+    "onSale": true,
+    "category": "Accessories",
+    "mainImage": "/Product/A2.jpg",
+    "gallery": ["/Product/A2.jpg"],
+    "description": "Blue-light blocking prescription-ready frames.",
+    "specs": { "material": "Stainless Steel", "origin": "Korea", "care": "Microfiber cloth" },
+    "colors": [{ "name": "Gold", "hex": "#FFD700" }],
+    "reviews": [
+      { "id": 1201, "user": "Amanda K.", "rating": 4, "comment": "Comfortable and stylish.", "date": "Feb 01, 2026" }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Baseball Cap A3",
+    "price": 45,
+    "originalPrice": 65,
+    "onSale": true,
+    "category": "Accessories",
+    "mainImage": "/Product/A3.jpg",
+    "gallery": ["/Product/A3.jpg"],
+    "description": "100% organic cotton cap with curved bill.",
+    "specs": { "material": "Organic Cotton", "origin": "India", "care": "Hand wash" },
+    "colors": [{ "name": "Charcoal", "hex": "#36454F" }],
+    "reviews": []
+  },
+  {
+    "id": 14,
+    "name": "Leather Belt A4",
+    "price": 70,
+    "originalPrice": 100,
+    "onSale": true,
+    "category": "Accessories",
+    "mainImage": "/Product/A4.jpg",
+    "gallery": ["/Product/A4.jpg"],
+    "description": "Hand-stitched leather with solid brass buckle.",
+    "specs": { "material": "Full-grain Leather", "origin": "UK", "care": "Polish buckle" },
+    "colors": [{ "name": "Cognac", "hex": "#8B4513" }, { "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 1401, "user": "Derek M.", "rating": 5, "comment": "Very durable and stylish.", "date": "Jan 28, 2026" }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Beanie A5",
+    "price": 35,
+    "originalPrice": 50,
+    "onSale": true,
+    "category": "Accessories",
+    "mainImage": "/Product/A5.jpg",
+    "gallery": ["/Product/A5.jpg"],
+    "description": "Merino wool blend for warmth and comfort.",
+    "specs": { "material": "Merino Wool", "origin": "New Zealand", "care": "Hand wash" },
+    "colors": [{ "name": "Grey", "hex": "#808080" }, { "name": "Black", "hex": "#000000" }],
+    "reviews": []
+  },
+  {
+    "id": 16,
+    "name": "Casual Pants P1",
+    "price": 95,
+    "originalPrice": 140,
+    "onSale": true,
+    "category": "Pants",
+    "mainImage": "/Product/S6.jpg",
+    "gallery": ["/Product/S6.jpg"],
+    "description": "Versatile chino pants for everyday wear.",
+    "specs": { "material": "Cotton Blend", "origin": "Turkey", "care": "Machine wash warm" },
+    "colors": [{ "name": "Navy", "hex": "#000080" }, { "name": "Khaki", "hex": "#C3B091" }],
+    "reviews": [
+      { "id": 1601, "user": "Steven R.", "rating": 4, "comment": "Great fit and comfort.", "date": "Feb 01, 2026" }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Denim Jeans P2",
+    "price": 110,
+    "originalPrice": 160,
+    "onSale": true,
+    "category": "Pants",
+    "mainImage": "/Product/T1.jpg",
+    "gallery": ["/Product/T1.jpg"],
+    "description": "Premium denim with a perfect balance of comfort and style.",
+    "specs": { "material": "100% Cotton Denim", "origin": "Japan", "care": "Wash inside out" },
+    "colors": [{ "name": "Indigo", "hex": "#4B0082" }, { "name": "Black", "hex": "#000000" }],
+    "reviews": [
+      { "id": 1701, "user": "Rachel H.", "rating": 5, "comment": "Best jeans I've owned.", "date": "Jan 25, 2026" }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Jogger Pants P3",
+    "price": 85,
+    "originalPrice": 130,
+    "onSale": true,
+    "category": "Pants",
+    "mainImage": "/Product/W1.jpg",
+    "gallery": ["/Product/W1.jpg"],
+    "description": "Comfortable joggers for active lifestyle.",
+    "specs": { "material": "Cotton-Poly Blend", "origin": "Vietnam", "care": "Machine wash cold" },
+    "colors": [{ "name": "Black", "hex": "#000000" }, { "name": "Grey", "hex": "#808080" }],
+    "reviews": []
+  },
+  {
+    "id": 19,
+    "name": "Summer Shirt S1",
+    "price": 62,
+    "originalPrice": 95,
+    "onSale": true,
+    "category": "Shirts",
+    "mainImage": "/Product/S1.jpg",
+    "gallery": ["/Product/S1.jpg"],
+    "description": "Breathable linen shirt perfect for summer.",
+    "specs": { "material": "100% Linen", "origin": "Belgium", "care": "Hand wash" },
+    "colors": [{ "name": "White", "hex": "#FFFFFF" }, { "name": "Blue", "hex": "#0000FF" }],
+    "reviews": [
+      { "id": 1901, "user": "Marcus A.", "rating": 5, "comment": "Perfect for hot weather.", "date": "Jan 20, 2026" }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Oxford Button-Up S4",
+    "price": 120,
+    "originalPrice": 170,
+    "onSale": true,
+    "category": "Shirts",
+    "mainImage": "/Product/S4.jpg",
+    "gallery": ["/Product/S4.jpg"],
+    "description": "Classic oxford cloth shirt with mother-of-pearl buttons.",
+    "specs": { "material": "Oxford Cotton", "origin": "Egypt", "care": "Machine wash warm" },
+    "colors": [{ "name": "White", "hex": "#FFFFFF" }, { "name": "Light Blue", "hex": "#ADD8E6" }],
+    "reviews": [
+      { "id": 2001, "user": "Charles N.", "rating": 4, "comment": "Timeless style and quality.", "date": "Jan 30, 2026" }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Wool Sweater S5",
+    "price": 140,
+    "originalPrice": 200,
+    "onSale": true,
+    "category": "Shirts",
+    "mainImage": "/Product/S5.jpg",
+    "gallery": ["/Product/S5.jpg"],
+    "description": "Fine merino wool crew neck sweater.",
+    "specs": { "material": "Merino Wool", "origin": "Scotland", "care": "Hand wash or dry clean" },
+    "colors": [{ "name": "Charcoal", "hex": "#36454F" }, { "name": "Cream", "hex": "#FFFDD0" }],
+    "reviews": [
+      { "id": 3801, "user": "George F.", "rating": 5, "comment": "Incredibly soft and warm.", "date": "Jan 28, 2026" }
+    ]
   }
   
 ];

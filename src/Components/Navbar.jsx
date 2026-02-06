@@ -57,9 +57,28 @@ function Navbar() {
         onMouseLeave={() => setIsShopOpen(false)}
       >
         {/* Top Announcement Bar */}
-        <div className="w-full bg-black text-white text-[10px] py-2 text-center uppercase tracking-widest">
-          Complimentary U.S. No-Rush Shipping on orders of $95 or more. Shop now
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="w-full bg-black text-white text-[10px] py-2 text-center uppercase tracking-widest"
+        >
+          <span>
+            Looking for a customised design made just for you?{" "}
+            <motion.span
+              whileHover={{ opacity: 0.7 }}
+              transition={{ duration: 0.2 }}
+              className="inline-block"
+            >
+              <Link
+                to="/Custom-Design"
+                className="underline underline-offset-4"
+              >
+                click here
+              </Link>
+            </motion.span>
+          </span>
+        </motion.div>
 
         {/* Main Navigation Bar */}
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between relative">

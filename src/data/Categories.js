@@ -4,5 +4,6 @@ export const categories = [
   "Leather Goods",
   "Accessories",
   "Shorts",
+  "Outerwear",
   "Shop All"
 ];

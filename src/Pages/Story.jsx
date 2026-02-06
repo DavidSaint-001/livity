@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import BackButton from "../Components/BackButton";
 import image from "../assets/images/img 3.png";
 
 const Story = () => {
     return (
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 mt-10 font-sans overflow-x-hidden">
+            <BackButton />
             {/* HERO SECTION */}
             <div className="max-w-4xl mx-auto text-center mb-24">
                 <motion.span

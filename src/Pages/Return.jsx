@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import BackButton from "../Components/BackButton";
 
 export default function Returns() {
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-3xl mx-auto font-sans">
+      <BackButton />
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-16">
         <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Service</p>
         <h1 className="text-3xl font-light tracking-tight">Returns & Exchanges</h1>

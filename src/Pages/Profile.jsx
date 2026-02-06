@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import BackButton from "../Components/BackButton";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function Profile() {
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-5xl mx-auto font-sans">
+      <BackButton />
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
         <div className="lg:col-span-1 space-y-6">
           <h1 className="text-xl font-medium tracking-tight">Hello, {user.name}</h1>

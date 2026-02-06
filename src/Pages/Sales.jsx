@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Tag } from "lucide-react";
+import BackButton from "../Components/BackButton";
 import ProductCard from "@/Components/ProductCard";
 // Import from your local data file
 import { products as allProducts } from "../data/Product";
@@ -13,6 +14,7 @@ function Sales() {
 
   return (
     <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 font-sans mt-20">
+      <BackButton />
       <header className="mb-16 flex items-end justify-between border-b border-gray-100 pb-8">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-red-500 mb-2">

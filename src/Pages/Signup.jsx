@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import BackButton from "../Components/BackButton";
 import { useAuth } from "../Context/AuthContext"; // Import Auth Hook
 
 export default function Signup() {
@@ -20,7 +21,8 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 px-6 bg-white font-sans">
-      <motion.div 
+      <BackButton />
+      <motion.div
         initial={{ opacity: 0, y: 20 }} 
         animate={{ opacity: 1, y: 0 }} 
         className="w-full max-w-md"

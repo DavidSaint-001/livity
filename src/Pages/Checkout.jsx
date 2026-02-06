@@ -2,32 +2,45 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useCart } from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, Lock, CreditCard } from "lucide-react";
+import { ChevronLeft, Lock } from "lucide-react";
+import BackButton from "../Components/BackButton";
 
 export default function Checkout() {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart(); // Added clearCart for post-purchase
   const navigate = useNavigate();
   
+  // State for form handling
+  const [formData, setFormData] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    postalCode: ''
+  });
+
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shipping = subtotal > 95 ? 0 : 15;
   const total = subtotal + shipping;
 
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Processing your order...");
-    navigate("/order-success");
+    // Simulate payment processing
+    console.log("Order Data:", formData, "Items:", cartItems);
+    alert("Payment Successful. Thank you for choosing Livity.");
+    if(clearCart) clearCart(); // Clear bag after successful purchase
+    navigate("/");
   };
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-[1200px] mx-auto font-sans">
-      <button 
-        onClick={() => navigate("/cart")}
-        className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest mb-10 hover:opacity-50 transition-opacity"
-      >
-        <ChevronLeft size={14} /> Back to Bag
-      </button>
+      <BackButton />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         
         {/* LEFT COLUMN: FORMS */}
         <motion.div 
@@ -39,7 +52,14 @@ export default function Checkout() {
           <section>
             <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-6 border-b pb-2">01. Contact Information</h2>
             <div className="space-y-4">
-              <input required type="email" placeholder="Email Address" className="checkout-input" />
+              <input 
+                required 
+                name="email"
+                type="email" 
+                placeholder="Email Address" 
+                className="checkout-input" 
+                onChange={handleInputChange}
+              />
               <div className="flex items-center gap-2 mt-2">
                 <input type="checkbox" id="news" className="accent-black" />
                 <label htmlFor="news" className="text-[12px] text-gray-500">Keep me updated on new arrivals and sales</label>
@@ -51,11 +71,11 @@ export default function Checkout() {
           <section>
             <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-6 border-b pb-2">02. Shipping Address</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input required type="text" placeholder="First Name" className="checkout-input" />
-              <input required type="text" placeholder="Last Name" className="checkout-input" />
-              <input required type="text" placeholder="Address" className="checkout-input md:col-span-2" />
-              <input required type="text" placeholder="City" className="checkout-input" />
-              <input required type="text" placeholder="Postal Code" className="checkout-input" />
+              <input required name="firstName" type="text" placeholder="First Name" className="checkout-input" onChange={handleInputChange} />
+              <input required name="lastName" type="text" placeholder="Last Name" className="checkout-input" onChange={handleInputChange} />
+              <input required name="address" type="text" placeholder="Address" className="checkout-input md:col-span-2" onChange={handleInputChange} />
+              <input required name="city" type="text" placeholder="City" className="checkout-input" onChange={handleInputChange} />
+              <input required name="postalCode" type="text" placeholder="Postal Code" className="checkout-input" onChange={handleInputChange} />
             </div>
           </section>
 
@@ -64,11 +84,11 @@ export default function Checkout() {
             <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-6 border-b pb-2">03. Payment</h2>
             <div className="border border-black p-4 flex justify-between items-center bg-gray-50">
               <div className="flex items-center gap-3">
-                <span className="text-[12px] font-medium tracking-widest uppercase">Credit Card</span>
+                <span className="text-[11px] font-bold tracking-widest uppercase">Credit Card</span>
               </div>
               <Lock size={14} className="text-gray-400" />
             </div>
-            <div className="mt-4 space-y-4 p-4 border border-t-0 border-gray-100">
+            <div className="mt-4 space-y-4 p-6 border border-gray-100 bg-[#fcfcfc]">
                 <input type="text" placeholder="Card Number" className="checkout-input" />
                 <div className="grid grid-cols-2 gap-4">
                     <input type="text" placeholder="MM / YY" className="checkout-input" />
@@ -78,35 +98,34 @@ export default function Checkout() {
           </section>
 
           <button 
-            onClick={handleSubmit}
-            className="w-full bg-black text-white py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-gray-800 transition-colors"
+            type="submit"
+            className="w-full bg-black text-white py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-gray-800 transition-colors shadow-lg"
           >
             Place Order — ${total.toFixed(2)}
           </button>
         </motion.div>
 
         {/* RIGHT COLUMN: ORDER SUMMARY */}
-        <div className="lg:sticky lg:top-32 bg-[#F9F9F9] p-8 md:p-10">
+        <div className="lg:sticky lg:top-32 bg-[#F9F9F9] p-8 md:p-10 border border-gray-100">
           <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-8">Order Summary</h2>
           
-          <div className="space-y-6 max-h-[300px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
+          <div className="space-y-6 max-h-[400px] overflow-y-auto pr-2 mb-8 no-scrollbar">
             {cartItems.map((item) => (
-              <div key={item.id} className="flex justify-between items-center">
+              <div key={`${item.id}-${item.selectedColor}`} className="flex justify-between items-center">
                 <div className="flex gap-4">
                   <div className="relative w-16 h-20 bg-white border border-gray-100 flex-shrink-0">
-                    {/* FIXED: Added mainImage check and better styling */}
                     <img 
                       src={item.mainImage || item.image} 
                       alt={item.name} 
                       className="w-full h-full object-contain p-2" 
                     />
-                    <span className="absolute -top-2 -right-2 bg-black text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                    <span className="absolute -top-2 -right-2 bg-black text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md">
                       {item.quantity}
                     </span>
                   </div>
                   <div className="flex flex-col justify-center">
                     <h4 className="text-[11px] font-bold uppercase tracking-widest">{item.name}</h4>
-                    <p className="text-[10px] text-gray-400 uppercase">
+                    <p className="text-[10px] text-gray-400 uppercase tracking-tighter">
                         {item.selectedColor || "Standard"}
                     </p>
                   </div>
@@ -117,21 +136,23 @@ export default function Checkout() {
           </div>
 
           <div className="space-y-3 border-t border-gray-200 pt-6">
-            <div className="flex justify-between text-[13px] font-light">
-              <span className="text-gray-500">Subtotal</span>
+            <div className="flex justify-between text-[12px] font-light">
+              <span className="text-gray-500 uppercase tracking-wider">Subtotal</span>
               <span>${subtotal.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-[13px] font-light">
-              <span className="text-gray-500">Shipping</span>
-              <span>{shipping === 0 ? "Complimentary" : `$${shipping.toFixed(2)}`}</span>
+            <div className="flex justify-between text-[12px] font-light">
+              <span className="text-gray-500 uppercase tracking-wider">Shipping</span>
+              <span className={shipping === 0 ? "text-green-600 font-medium" : ""}>
+                {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
+              </span>
             </div>
-            <div className="flex justify-between items-center pt-6 mt-2 border-t border-gray-100">
+            <div className="flex justify-between items-center pt-6 mt-2 border-t border-gray-200">
               <span className="text-[11px] font-bold uppercase tracking-widest">Total</span>
-              <span className="text-2xl font-light">${total.toFixed(2)}</span>
+              <span className="text-2xl font-light tracking-tighter">${total.toFixed(2)}</span>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

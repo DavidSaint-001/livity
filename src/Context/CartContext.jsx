@@ -3,20 +3,17 @@ import { createContext, useContext, useState, useEffect } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // 1. Initialize state from localStorage if it exists
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("livity_cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // 2. Every time cartItems changes, save it to localStorage
   useEffect(() => {
     localStorage.setItem("livity_cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (product) => {
     setCartItems((prev) => {
-      // Check if item with same ID AND same Color/Size exists
       const existingItem = prev.find(
         (item) => 
           item.id === product.id && 
@@ -35,14 +32,18 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  // FIX: Identify by ID + Color + Size
+  const removeFromCart = (id, color, size) => {
+    setCartItems((prev) => prev.filter((item) => 
+      !(item.id === id && item.selectedColor === color && item.selectedSize === size)
+    ));
   };
 
-  const updateQuantity = (id, amount) => {
+  // FIX: Update quantity specifically for that variant
+  const updateQuantity = (id, color, size, amount) => {
     setCartItems((prev) =>
       prev.map((item) =>
-        item.id === id
+        item.id === id && item.selectedColor === color && item.selectedSize === size
           ? { ...item, quantity: Math.max(1, item.quantity + amount) }
           : item
       )
@@ -50,9 +51,19 @@ export const CartProvider = ({ children }) => {
   };
 
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  
+  // Extra helper: Total number of items (for the badge on your Navbar)
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, subtotal }}>
+    <CartContext.Provider value={{ 
+      cartItems, 
+      addToCart, 
+      removeFromCart, 
+      updateQuantity, 
+      subtotal, 
+      cartCount 
+    }}>
       {children}
     </CartContext.Provider>
   );
