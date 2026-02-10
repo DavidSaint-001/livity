@@ -3,15 +3,49 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Send, Camera } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../Components/BackButton";
+import { useAuth } from "../Context/AuthContext"; // Import Auth
+import { supabase } from "../supabaseClient"; // Import Supabase
 
 export default function CustomDesign() {
   const navigate = useNavigate();
-  const [submitted, setSubmitted] = useState(false);
+  const { user } = useAuth(); // Get user session
   
-  const handleSubmit = (e) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // Form State
+  const [formData, setFormData] = useState({
+    fullName: user?.user_metadata?.display_name || "",
+    email: user?.email || "",
+    category: "Select Category",
+    brief: "",
+  });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Logic to send data to your email/database would go here
+    setLoading(true);
+
+    try {
+      const { error } = await supabase
+        .from("custom_designs")
+        .insert([
+          {
+            user_id: user?.id || null, // Link to user if logged in
+            full_name: formData.fullName,
+            email: formData.email,
+            design_category: formData.category,
+            design_description: formData.brief,
+            status: "pending",
+          },
+        ]);
+
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (error) {
+      alert("Error submitting inquiry: " + error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -86,18 +120,36 @@ export default function CustomDesign() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-1">
                 <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">Full Name</label>
-                <input required type="text" className="checkout-input" placeholder="REQUIRED" />
+                <input 
+                  required 
+                  type="text" 
+                  className="checkout-input" 
+                  placeholder="REQUIRED" 
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                />
               </div>
               <div className="space-y-1">
                 <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">Email Address</label>
-                <input required type="email" className="checkout-input" placeholder="REQUIRED" />
+                <input 
+                  required 
+                  type="email" 
+                  className="checkout-input" 
+                  placeholder="REQUIRED" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
               </div>
             </div>
 
             <div className="space-y-1">
               <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400">Design Category</label>
-              <select className="checkout-input bg-transparent cursor-pointer">
-                <option>Select Category</option>
+              <select 
+                className="checkout-input bg-transparent cursor-pointer"
+                value={formData.category}
+                onChange={(e) => setFormData({...formData, category: e.target.value})}
+              >
+                <option disabled>Select Category</option>
                 <option>Leather Goods & Bags</option>
                 <option>Outerwear & Tailoring</option>
                 <option>Footwear</option>
@@ -111,6 +163,8 @@ export default function CustomDesign() {
                 required
                 className="w-full border-b border-gray-200 py-4 text-[13px] font-light focus:outline-none focus:border-black transition-colors min-h-[150px] resize-none"
                 placeholder="DESCRIBE YOUR VISION, MATERIALS, AND ANY SPECIFIC REQUIREMENTS..."
+                value={formData.brief}
+                onChange={(e) => setFormData({...formData, brief: e.target.value})}
               />
             </div>
 
@@ -122,10 +176,13 @@ export default function CustomDesign() {
 
             <button 
               type="submit"
-              className="w-full bg-black text-white py-6 flex items-center justify-center gap-3 group transition-all hover:bg-zinc-900 shadow-xl"
+              disabled={loading}
+              className="w-full bg-black text-white py-6 flex items-center justify-center gap-3 group transition-all hover:bg-zinc-900 shadow-xl disabled:opacity-50"
             >
-              <span className="text-[11px] font-bold uppercase tracking-[0.4em]">Send Inquiry</span>
-              <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.4em]">
+                {loading ? "Sending..." : "Send Inquiry"}
+              </span>
+              {!loading && <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />}
             </button>
           </motion.form>
         </div>

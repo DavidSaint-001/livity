@@ -1,45 +1,67 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+// SUPABASE: Import your client
+import { supabase } from "../supabaseClient"; 
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // Added loading state
 
-  // Auto-load user from local storage on refresh
+  // SUPABASE: Auto-load user from Supabase Session on refresh
   useEffect(() => {
-    const savedUser = localStorage.getItem("livity_user");
-    if (savedUser) setUser(JSON.parse(savedUser));
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+      setLoading(false);
+    };
+
+    getSession();
+
+    // SUPABASE: Listen for changes (Login/Logout) automatically
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  const login = (email, password) => {
-    const savedUser = localStorage.getItem("livity_user");
-    if (savedUser) {
-      const user = JSON.parse(savedUser);
-      if (user.email === email && user.password === password) {
-        setUser(user);
-        return true;
-      } else {
-        throw new Error("Invalid email or password");
+  // SUPABASE: Proper Login
+  const login = async (email, password) => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    
+    if (error) throw error;
+    return data;
+  };
+
+  // SUPABASE: Proper Signup
+  const signup = async (email, password, name) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          display_name: name, // Store the name in user metadata
+        }
       }
-    } else {
-      throw new Error("User not found");
-    }
+    });
+
+    if (error) throw error;
+    return data;
   };
 
-  const signup = (email, password, name) => {
-    const user = { name, email, password };
-    setUser(user);
-    localStorage.setItem("livity_user", JSON.stringify(user));
-  };
-
-  const logout = () => {
+  // SUPABASE: Proper Logout
+  const logout = async () => {
+    await supabase.auth.signOut();
     setUser(null);
-    localStorage.removeItem("livity_user");
   };
 
   return (
     <AuthContext.Provider value={{ user, login, signup, logout }}>
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

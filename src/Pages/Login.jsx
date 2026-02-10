@@ -2,31 +2,38 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import BackButton from "../Components/BackButton";
-import { useAuth } from "../Context/AuthContext"; // 1. Import Auth Hook
+import { useAuth } from "../Context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); // Track password
+  const [password, setPassword] = useState("");
+  // SUPABASE: Added loading state to prevent double submissions
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   const navigate = useNavigate();
-  const { login } = useAuth(); // 2. Get the login function from context
+  const { login } = useAuth();
 
-  const handleLogin = (e) => {
+  // SUPABASE: Changed to async to handle the cloud request
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      // 3. Use the Context Login
-      login(email, password);
+      // SUPABASE: Awaiting the real authentication check
+      await login(email, password);
 
-      // 4. Redirect to profile - No reload needed!
+      // Redirect to profile
       navigate("/profile");
     } catch (error) {
+      // SUPABASE: This will now show real errors (e.g., "Invalid login credentials")
       alert(error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 px-6 bg-white font-sans">
-      <BackButton />
+      <BackButton/>
       <motion.div
         initial={{ opacity: 0, y: 20 }} 
         animate={{ opacity: 1, y: 0 }} 
@@ -57,9 +64,10 @@ export default function Login() {
           
           <button 
             type="submit" 
-            className="w-full bg-black text-white py-4 text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-gray-800 transition-all mt-4"
+            disabled={isSubmitting} // SUPABASE: Disable button while logging in
+            className={`w-full bg-black text-white py-4 text-[11px] font-bold uppercase tracking-[0.2em] transition-all mt-4 ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-800"}`}
           >
-            Sign In
+            {isSubmitting ? "Authenticating..." : "Sign In"}
           </button>
         </form>
 

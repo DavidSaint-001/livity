@@ -2,21 +2,33 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import BackButton from "../Components/BackButton";
-import { useAuth } from "../Context/AuthContext"; // Import Auth Hook
+import { useAuth } from "../Context/AuthContext";
 
 export default function Signup() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  // SUPABASE: Added loading state
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   const navigate = useNavigate();
-  const { signup } = useAuth(); // Get signup function
+  const { signup } = useAuth();
 
-  const handleSubmit = (e) => {
+  // SUPABASE: Changed to async
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // 1. Sign up the user
-    signup(formData.email, formData.password, formData.name);
+    try {
+      // SUPABASE: Await the signup process
+      // This sends email, password, and name (metadata) to the cloud
+      await signup(formData.email, formData.password, formData.name);
 
-    // 2. Send them to the profile or home
-    navigate("/profile");
+      // Redirect to profile or home
+      navigate("/profile");
+    } catch (error) {
+      // SUPABASE: Catches things like "Password too short" or "User already exists"
+      alert(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,9 +72,10 @@ export default function Signup() {
           
           <button 
             type="submit"
-            className="w-full bg-black text-white py-4 text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-gray-800 transition-all mt-4"
+            disabled={isSubmitting} // SUPABASE: Prevent multiple clicks
+            className={`w-full bg-black text-white py-4 text-[11px] font-bold uppercase tracking-[0.2em] transition-all mt-4 ${isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-800"}`}
           >
-            Create Account
+            {isSubmitting ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 

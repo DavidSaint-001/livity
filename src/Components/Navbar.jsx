@@ -13,6 +13,7 @@ import { collections } from "../data/Collections";
 // Contexts
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
+import { useAuth } from "../Context/AuthContext"; // Import Auth Hook
 
 const menuFeaturedImg = image1;
 
@@ -25,12 +26,11 @@ function Navbar() {
   
   const { wishlist } = useWishlist();
   const { cartItems } = useCart();
+  const { user } = useAuth(); // Get the current user from Supabase
 
-  // AUTH LOGIC: Check if user is logged in
-  const isLoggedIn = localStorage.getItem("livity_user");
-
+  // AUTH LOGIC: Use the user object from Context
   const handleProfileClick = () => {
-    if (isLoggedIn) {
+    if (user) {
       navigate("/profile");
     } else {
       navigate("/login");
@@ -128,9 +128,9 @@ function Navbar() {
                 </button>
                 <Link to="/care" className="text-[12px] font-medium hover:opacity-50 uppercase">CARE</Link>
                 
-                {/* Profile Toggle */}
+                {/* Profile Toggle - Icon color changes based on auth state */}
                 <button onClick={handleProfileClick} className="hover:opacity-50 transition-opacity">
-                  <User size={19} strokeWidth={1.5} className={isLoggedIn ? "text-black" : "text-gray-400"} />
+                  <User size={19} strokeWidth={1.5} className={user ? "text-black" : "text-gray-400"} />
                 </button>
             </div>
             
@@ -213,7 +213,7 @@ function Navbar() {
         {isMobileMenuOpen && (
           <MobileDrawer 
             close={() => setIsMobileMenuOpen(false)} 
-            isLoggedIn={isLoggedIn} 
+            isLoggedIn={!!user} 
             handleProfileClick={handleProfileClick}
           />
         )}
@@ -258,7 +258,6 @@ const MobileDrawer = ({ close, isLoggedIn, handleProfileClick }) => {
         </div>
         <div className="flex flex-col px-8 py-4 overflow-y-auto">
           
-          {/* Shop Accordion */}
           <div className="border-b border-gray-100">
             <button onClick={() => setOpenSection(openSection === "Shop" ? "" : "Shop")} className="w-full py-5 flex justify-between items-center text-[13px] font-semibold uppercase tracking-[0.15em]">
               SHOP {openSection === "Shop" ? <Minus size={16} /> : <Plus size={16} />}
@@ -274,7 +273,6 @@ const MobileDrawer = ({ close, isLoggedIn, handleProfileClick }) => {
             </AnimatePresence>
           </div>
 
-          {/* Main Mobile Links */}
           {mobileLinks.map((link) => (
             <div key={link.name} className="border-b border-gray-100">
               <Link 
@@ -287,7 +285,6 @@ const MobileDrawer = ({ close, isLoggedIn, handleProfileClick }) => {
             </div>
           ))}
 
-          {/* Profile Mobile Link */}
           <div className="border-b border-gray-100">
             <button 
               onClick={() => { handleProfileClick(); close(); }} 
