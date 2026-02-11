@@ -1,50 +1,50 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-// SUPABASE: Import your client
 import { supabase } from "../supabaseClient"; 
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [loading, setLoading] = useState(true);
 
-  // SUPABASE: Auto-load user from Supabase Session on refresh
   useEffect(() => {
-    const getSession = async () => {
+    // 1. Initial Session Check
+    const initializeAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
       setLoading(false);
     };
 
-    getSession();
+    initializeAuth();
 
-    // SUPABASE: Listen for changes (Login/Logout) automatically
+    // 2. Listen for Auth State Changes (Login, Logout, Token Refresh)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      setLoading(false); 
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
-  // SUPABASE: Proper Login
+  // --- ACTIONS ---
+
   const login = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+      email: email.trim(), 
+      password: password,
     });
     
     if (error) throw error;
     return data;
   };
 
-  // SUPABASE: Proper Signup
   const signup = async (email, password, name) => {
     const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
+      email: email.trim(),
+      password: password,
       options: {
         data: {
-          display_name: name, // Store the name in user metadata
+          display_name: name,
         }
       }
     });
@@ -53,14 +53,24 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
-  // SUPABASE: Proper Logout
   const logout = async () => {
-    await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut();
+    if (error) console.error("Logout error:", error.message);
     setUser(null);
   };
 
+  // NEW: Forgot Password Logic
+  const resetPassword = async (email) => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      // This is where the user will be sent after clicking the email link
+      redirectTo: `${window.location.origin}/login`, 
+    });
+
+    if (error) throw error;
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout, resetPassword, loading }}>
       {!loading && children}
     </AuthContext.Provider>
   );

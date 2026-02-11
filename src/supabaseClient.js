@@ -4,13 +4,9 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  global: {
-    headers: {
-      'apikey': supabaseAnonKey,
-      'Authorization': `Bearer ${supabaseAnonKey}`
-    }
-  },
   auth: {
-    persistSession: false
+    persistSession: true,      // CHANGED TO TRUE: This saves the session to LocalStorage
+    autoRefreshToken: true,    // Keeps the session alive in the background
+    detectSessionInUrl: true   // Helps with email confirmation links
   }
 })
