@@ -8,9 +8,16 @@ export const CartProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  // Save to localStorage whenever cart changes
   useEffect(() => {
     localStorage.setItem("livity_cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  // NEW: Function to empty the cart after successful checkout
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem("livity_cart");
+  };
 
   const addToCart = (product) => {
     setCartItems((prev) => {
@@ -32,14 +39,12 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  // FIX: Identify by ID + Color + Size
   const removeFromCart = (id, color, size) => {
     setCartItems((prev) => prev.filter((item) => 
       !(item.id === id && item.selectedColor === color && item.selectedSize === size)
     ));
   };
 
-  // FIX: Update quantity specifically for that variant
   const updateQuantity = (id, color, size, amount) => {
     setCartItems((prev) =>
       prev.map((item) =>
@@ -51,8 +56,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  
-  // Extra helper: Total number of items (for the badge on your Navbar)
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -61,6 +64,7 @@ export const CartProvider = ({ children }) => {
       addToCart, 
       removeFromCart, 
       updateQuantity, 
+      clearCart, // Crucial: This makes it available to Checkout.jsx
       subtotal, 
       cartCount 
     }}>

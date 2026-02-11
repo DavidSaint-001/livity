@@ -21,6 +21,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "./Components/Loader";
 import CustomDesign from "./Pages/CustomDesign";
+import OrderSuccess from "./Pages/OrderSuccess";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -65,6 +66,7 @@ function App() {
        <Route path="/faq" element={<FAQ />} />
        <Route path="/returns" element={<Return />} />
        <Route path="/custom-design" element={<CustomDesign />} />
+       <Route path="/success" element={<OrderSuccess />} />
        
        
        

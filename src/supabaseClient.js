@@ -1,9 +1,16 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Your project address
-const supabaseUrl = 'https://ytoknbseexbbreaaedvq.supabase.co'
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-// Your "guest pass" key
-const supabaseAnonKey = 'sb_publishable_sxk2a6-NTUDuKBVLbF_PNw_aVY-Z0kC'
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  global: {
+    headers: {
+      'apikey': supabaseAnonKey,
+      'Authorization': `Bearer ${supabaseAnonKey}`
+    }
+  },
+  auth: {
+    persistSession: false
+  }
+})
